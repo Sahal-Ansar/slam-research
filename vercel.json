@@ -1,7 +1,12 @@
 {
+  "framework": null,
+  "outputDirectory": ".",
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/drsirisha", "destination": "/drsirisha/index.html" }
+    {
+      "source": "/drsirisha",
+      "destination": "/drsirisha/index.html"
+    }
   ]
 }
