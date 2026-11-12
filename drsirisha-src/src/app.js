@@ -14,7 +14,7 @@ const SCOREKEYS = [['acc', 'Accuracy'], ['eff', 'Onboard efficiency'], ['rob', '
 
 /* ---------------- NAV ---------------- */
 function buildNav() {
-  const links = [['brief', 'Brief'], ['problem', 'Problem'], ['sensors', 'Sensors'], ['stack', 'Pipeline'], ['families', 'Families'], ['methods', 'Methods'], ['flight', 'Flight test'], ['bench', 'Benchmarks'], ['fit', 'Best fit'], ['build', 'Build'], ['datasets', 'Datasets'], ['roadmap', 'Roadmap'], ['sources', 'Sources']];
+  const links = [['brief', 'Brief'], ['problem', 'Problem'], ['sensors', 'Sensors'], ['stack', 'Pipeline'], ['lab', '3D lab'], ['families', 'Families'], ['methods', 'Methods'], ['flight', 'Flight test'], ['bench', 'Benchmarks'], ['fit', 'Best fit'], ['build', 'Build'], ['datasets', 'Datasets'], ['roadmap', 'Roadmap'], ['sources', 'Sources']];
   const nav = h('nav', { class: 'nav' }, h('div', { class: 'wrap' },
     h('a', { class: 'brand', href: '#top' }, 'SLAM', h('b', {}, '/'), 'DRONES'),
     h('div', { class: 'nav-links' }, ...links.map(([id, t]) => h('a', { href: '#' + id, 'data-id': id }, t, id === 'flight' ? h('span', { class: 'nav-count', id: 'navCount' }, STATE.cmp.size) : null)))
@@ -223,11 +223,15 @@ function openDetail(id, push = true) {
   W.append(h('div', { class: 'callout', style: 'margin-top:18px' }, h('b', {}, 'For a GPS-denied drone: '), h('span', { html: m.verdict })));
   // simulation
   const simSec = h('div', { class: 'dsec' }, h('h3', { class: 'h' }, 'flight simulation', h('span', { class: 'us' }, '_')));
-  const ms = h('div', { class: 'stage' });
-  simSec.append(h('div', { class: 'simbox' }, ms, h('div', { class: 'simbar' }, h('span', { class: 'mono' }, `${EST[m.est].name} profile vs ground truth · schematic`), h('span', { class: 'live' }, h('i'), 'live'))));
+  const simOpts = { aspect: .5, stripes: m.est === 'lio_intensity', thermal: m.est === 'tio' || m.est === 'multi', names: [m.name] };
+  simSec.append(simTabs([
+    ['3D replay', (stage) => missionView3d(stage, [m.est], { aspect: .5, names: [m.name], colors: [F.col] }), `${EST[m.est].name} profile vs ground truth in 3D · schematic`],
+    ['Top-down + error strip', (stage) => missionView(stage, [m.est], simOpts), `${EST[m.est].name} profile vs ground truth · schematic`],
+  ], 0));
+  const lessons = LAB_FOR[m.fam] || [];
+  if (lessons.length) simSec.append(h('div', { class: 'labref' }, h('span', {}, 'Understand the mechanism in 3D:'), ...lessons.map(id => { const L = LAB_LESSONS.find(x => x[0] === id); return h('a', { class: 'chip', href: '#lab-' + id, onclick: (e) => { e.preventDefault(); closeDetail(false); history.replaceState(null, '', '#lab-' + id); setTimeout(() => document.getElementById('lab-' + id)?.scrollIntoView({ behavior: 'smooth' }), 60); } }, L[1], ' →'); })));
   simSec.append(h('p', { class: 'note' }, m.simNote || 'The same flight as the hero: textured lab, a fast yaw spin, a long corridor, a low-light hall, a smoky rack aisle, then back to the start. The error model is driven by what this sensor set can observe at each moment; it illustrates failure modes and is not a reproduction of the paper\'s numbers.'));
   W.append(simSec);
-  requestAnimationFrame(() => { const s = missionView(ms, [m.est], { aspect: .5, stripes: m.est === 'lio_intensity', thermal: m.est === 'tio' || m.est === 'multi', names: [m.name] }); });
   // mechanism
   if (m.mech) {
     const mech = h('div', { class: 'stage' });
@@ -301,9 +305,10 @@ function buildFlight() {
     box.innerHTML = '';
     const ms = [...STATE.cmp].map(byId).filter(Boolean);
     if (!ms.length) { box.append(h('p', { class: 'mute' }, 'Select at least one method.')); return; }
-    const stage = h('div', { class: 'stage' });
-    box.append(h('div', { class: 'simbox' }, stage, h('div', { class: 'simbar' }, h('span', { class: 'mono' }, 'Mission replay · each line is one estimator · schematic error model'), h('span', { class: 'live' }, h('i'), 'live'))));
-    requestAnimationFrame(() => missionView(stage, ms.map(m => m.est), { aspect: .56, colors: ms.map((m, i) => CMPCOLS[i]), names: ms.map(m => m.name), layers: { rays: false, cone: false, ellipse: false } }));
+    box.append(simTabs([
+      ['3D replay', (stage) => missionView3d(stage, ms.map(m => m.est), { aspect: .56, colors: ms.map((m, i) => CMPCOLS[i]), names: ms.map(m => m.name) }), 'Mission replay in 3D · walls, LiDAR returns, tracked features, uncertainty · schematic error model'],
+      ['Top-down + error strip', (stage) => missionView(stage, ms.map(m => m.est), { aspect: .56, colors: ms.map((m, i) => CMPCOLS[i]), names: ms.map(m => m.name), layers: { rays: false, cone: false, ellipse: false } }), 'Mission replay · each line is one estimator · schematic error model'],
+    ], STATE.flightTab || 0, (i) => STATE.flightTab = i));
     const rd = h('div', { class: 'stage', style: 'background:#fff;border-radius:16px' });
     const t = h('table', { class: 'tbl' });
     t.append(h('thead', {}, h('tr', {}, h('th', {}, ''), ...ms.map((m, i) => h('th', {}, h('span', { class: 'dot', style: { background: CMPCOLS[i] } }), m.name)))));
@@ -316,6 +321,24 @@ function buildFlight() {
   };
   STATE.renderCmp = render; render();
   return sec;
+}
+
+
+/* ---------------- sim tabs (3D / 2D) ---------------- */
+const LAB_FOR = { vio: ['cam', 'imu', 'graph'], lio: ['lidar', 'graph'], livo: ['lidar', 'maps'], deg: ['lidar', 'imu'], lrn: ['cam', 'maps'], swm: ['swarm', 'graph'] };
+function simTabs(tabs, start = 0, onSwitch) {
+  const wrap = h('div', { class: 'simtabs' });
+  const head = h('div', { class: 'tabhead' });
+  const body = h('div');
+  const show = (i) => {
+    $$('button', head).forEach((b, j) => b.classList.toggle('on', j === i)); body.innerHTML = '';
+    const stage = h('div', { class: 'stage' });
+    body.append(h('div', { class: 'simbox' }, stage, h('div', { class: 'simbar' }, h('span', { class: 'mono' }, tabs[i][2]), h('span', { class: 'live' }, h('i'), 'live'))));
+    requestAnimationFrame(() => tabs[i][1](stage)); onSwitch && onSwitch(i);
+  };
+  tabs.forEach(([t], i) => head.append(h('button', { class: 'btn btn-sm btn-tonal', onclick: () => show(i) }, t)));
+  wrap.append(head, body); show(start);
+  return wrap;
 }
 
 /* ---------------- BENCHMARKS ---------------- */
@@ -529,7 +552,7 @@ function buildSources() {
 /* ---------------- BOOT ---------------- */
 function boot() {
   const root = $('#root');
-  root.append(buildNav(), buildHero(), buildBrief(), buildProblem(), buildSensors(), buildStack(), buildFamilies(), buildMethods(), buildFlight(), buildBench(), buildFit(), buildBuild(), buildDatasets(), buildRoadmap(), buildSources(),
+  root.append(buildNav(), buildHero(), buildBrief(), buildProblem(), buildSensors(), buildStack(), buildLab(), buildFamilies(), buildMethods(), buildFlight(), buildBench(), buildFit(), buildBuild(), buildDatasets(), buildRoadmap(), buildSources(),
     h('footer', { class: 'wrap' }, h('div', { style: 'display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;border-top:1px solid var(--hair);padding-top:20px' }, h('span', {}, 'SLAM/DRONES · a field guide for Sirisha · November 2026'), h('a', { href: '/' }, '← SLAM/INDEX (general edition)'))));
   document.body.append(detail);
   const m = location.hash.match(/^#m-(.+)$/); if (m && byId(m[1])) openDetail(m[1], false);
