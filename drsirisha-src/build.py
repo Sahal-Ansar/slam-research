@@ -1,7 +1,7 @@
 import re,os
 src='src'
 css=open(f'{src}/style.css').read()
-order=['core.js','mission.js','sims.js','data_tables.js','data_vio.js','data_lio.js','data_rest.js','data_misc.js','app.js']
+order=['core.js','mission.js','sims.js','v3d.js','lab.js','data_tables.js','data_vio.js','data_lio.js','data_rest.js','data_misc.js','app.js']
 js='\n'.join(open(f'{src}/{f}').read() for f in order)
 html=f'''<!doctype html>
 <html lang="en">
