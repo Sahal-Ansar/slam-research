@@ -345,6 +345,69 @@ footer{padding:60px 0 80px;color:var(--mute);font-size:12.5px}
 .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
 .reveal.in{opacity:1;transform:none}
 
+/* ---------- 3D views ---------- */
+.v3stage{position:relative}
+.v3ctl{position:absolute;right:10px;bottom:10px;display:flex;gap:4px;z-index:3}
+.v3ctl button{width:30px;height:30px;border-radius:99px;border:1px solid var(--hair);background:rgba(255,255,255,.92);font-size:15px;line-height:1;cursor:pointer;color:var(--ink);display:grid;place-items:center;padding:0}
+.v3ctl button:hover{background:#fff;border-color:#c8c8ce}
+.v3ctl button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.v3bar{display:flex;gap:6px;align-items:center;flex-wrap:wrap;padding:10px 2px 2px}
+.v3bar input[type=range]{flex:1;min-width:120px}
+.simbox .btn-tonal,.lesson .btn-tonal{background:#fff}
+.simbox .btn-tonal:hover,.lesson .btn-tonal:hover{background:var(--soft-2)}
+.simbox .btn.on,.lesson .btn.on{background:var(--ink);color:#fff}
+.legend i.sw{width:10px;height:10px;border-radius:3px;vertical-align:-1px}
+.simtabs .tabhead{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
+.labref{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:12px;font-size:13px;color:var(--mute)}
+input[type=range]{accent-color:var(--ink);width:100%}
+.btn:disabled{opacity:.35;cursor:default}
+
+/* ---------- 3D lab lessons ---------- */
+.lesson{margin-top:26px;background:var(--soft);border-radius:var(--r-xl);padding:22px;scroll-margin-top:70px}
+.lhead{display:flex;gap:18px;align-items:flex-start;margin-bottom:16px}
+.lnum{font-weight:200;font-size:52px;line-height:.85;color:var(--accent);font-stretch:80%;letter-spacing:-.03em;flex:none}
+.lhead h3{margin:0;font-size:24px;letter-spacing:-.015em;line-height:1.15}
+.lhead p{margin:6px 0 0;color:var(--mute);font-size:14.5px;max-width:860px}
+.lgrid{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:18px;align-items:start}
+@media (max-width:980px){.lgrid{grid-template-columns:1fr}}
+.lesson .simbox{padding:0;background:transparent}
+.lro{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px 20px;margin-top:10px;font-family:var(--mono);font-size:11.5px;background:#fff;border-radius:16px;padding:12px 16px;min-height:40px}
+@media (max-width:640px){.lro{grid-template-columns:1fr}}
+.lro .r{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--soft-2);padding:5px 0}
+.lro .r span{color:var(--mute)}
+.lro .r b{font-weight:600;text-align:right}
+.lro .sub{grid-column:1/-1;border-bottom:0;padding-top:10px}
+.lro .eig{grid-column:1/-1;display:grid;grid-template-columns:190px 1fr 62px;gap:10px;align-items:center;padding:2px 0}
+.lro .eig span{color:var(--ink)}
+.lro .eig i{display:block;height:8px;border-radius:9px;min-width:3px}
+.lro .eig b{font-weight:500;text-align:right;color:var(--mute)}
+.lsteps .lstep{border-bottom:1px solid var(--hair)}
+.lst-h{all:unset;box-sizing:border-box;cursor:pointer;display:flex;gap:10px;align-items:center;padding:10px 2px;font-weight:600;font-size:14.5px;width:100%;line-height:1.3}
+.lst-h:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+.lst-h .n{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:99px;background:#fff;border:1px solid var(--hair);font-size:11px;font-family:var(--mono);flex:none}
+.lstep:not(.on) .lst-h{color:var(--mute);font-weight:500}
+.lstep.on .lst-h .n{background:var(--ink);color:#fff;border-color:var(--ink)}
+.lst-b{display:none;font-size:14px;line-height:1.6;padding:0 2px 14px 34px;color:#3a3a3c}
+.lst-b b{color:var(--ink)}
+.lstep.on .lst-b{display:block;animation:fadein .25s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:none}}
+.lctl{display:flex;flex-direction:column;gap:10px;margin:14px 0}
+.lctl:empty{display:none}
+.ctl{display:grid;grid-template-columns:128px minmax(0,1fr) 64px;gap:10px;align-items:center;font-size:12.5px}
+.ctl>span{color:var(--mute)}
+.ctl>b{font-family:var(--mono);font-size:11.5px;text-align:right;font-weight:600}
+.ctl.seg{grid-template-columns:1fr;gap:6px}
+.ctl.seg .segs{display:flex;flex-wrap:wrap;gap:6px}
+.ctl.tog{display:flex;gap:8px;align-items:center;cursor:pointer}
+.ctl.tog input{accent-color:var(--ink);width:16px;height:16px}
+.ctl.tog span{color:var(--ink)}
+.ctl.btns{display:flex;gap:8px;flex-wrap:wrap}
+.lnav{display:flex;justify-content:space-between;align-items:center;gap:8px;padding-top:12px;border-top:1px solid var(--hair)}
+
+.lro .r.w{grid-column:1/-1}
+.simbar>.mono{flex:1;min-width:0}
+.simbar .live{flex:none}
+
 </style>
 </head>
 <body>
@@ -1363,6 +1426,1165 @@ function envThumb(parent, kind) {
     drone(ctx, px, py, Math.cos(t * .8), .75, COL.vis);
   });
   return st;
+}
+
+/* =====================================================================
+   V3D — a small 3D renderer on canvas 2D (painter's algorithm).
+   World frame: x east, y north, z up, metres. No dependencies.
+   ===================================================================== */
+const v3 = {
+  a: (a, b) => [a[0] + b[0], a[1] + b[1], a[2] + b[2]],
+  s: (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]],
+  k: (a, k) => [a[0] * k, a[1] * k, a[2] * k],
+  d: (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2],
+  x: (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]],
+  n: (a) => Math.hypot(a[0], a[1], a[2]),
+  u: (a) => { const l = Math.hypot(a[0], a[1], a[2]) || 1; return [a[0] / l, a[1] / l, a[2] / l]; },
+  l: (a, b, t) => [lerp(a[0], b[0], t), lerp(a[1], b[1], t), lerp(a[2], b[2], t)],
+};
+const m3 = {
+  I: () => [[1, 0, 0], [0, 1, 0], [0, 0, 1]],
+  mul: (A, B) => A.map(r => [0, 1, 2].map(j => r[0] * B[0][j] + r[1] * B[1][j] + r[2] * B[2][j])),
+  v: (A, v) => [A[0][0] * v[0] + A[0][1] * v[1] + A[0][2] * v[2], A[1][0] * v[0] + A[1][1] * v[1] + A[1][2] * v[2], A[2][0] * v[0] + A[2][1] * v[1] + A[2][2] * v[2]],
+  T: (A) => [[A[0][0], A[1][0], A[2][0]], [A[0][1], A[1][1], A[2][1]], [A[0][2], A[1][2], A[2][2]]],
+  rz: (a) => { const c = Math.cos(a), s = Math.sin(a); return [[c, -s, 0], [s, c, 0], [0, 0, 1]]; },
+  ry: (a) => { const c = Math.cos(a), s = Math.sin(a); return [[c, 0, s], [0, 1, 0], [-s, 0, c]]; },
+  rx: (a) => { const c = Math.cos(a), s = Math.sin(a); return [[1, 0, 0], [0, c, -s], [0, s, c]]; },
+  ypr: (y, p, r) => m3.mul(m3.rz(y), m3.mul(m3.ry(p), m3.rx(r))),
+  cols: (a, b, c) => [[a[0], b[0], c[0]], [a[1], b[1], c[1]], [a[2], b[2], c[2]]],
+  col: (A, j) => [A[0][j], A[1][j], A[2][j]],
+  exp: (w) => { // Rodrigues
+    const th = Math.hypot(w[0], w[1], w[2]); if (th < 1e-12) return m3.I();
+    const k = [w[0] / th, w[1] / th, w[2] / th], c = Math.cos(th), s = Math.sin(th), C = 1 - c;
+    return [[c + k[0] * k[0] * C, k[0] * k[1] * C - k[2] * s, k[0] * k[2] * C + k[1] * s],
+    [k[1] * k[0] * C + k[2] * s, c + k[1] * k[1] * C, k[1] * k[2] * C - k[0] * s],
+    [k[2] * k[0] * C - k[1] * s, k[2] * k[1] * C + k[0] * s, c + k[2] * k[2] * C]];
+  },
+  add: (A, B) => A.map((r, i) => r.map((v, j) => v + B[i][j])),
+  sc: (A, k) => A.map(r => r.map(v => v * k)),
+};
+const yawOf = (R) => Math.atan2(R[1][0], R[0][0]);
+const rpyOf = (R) => ({ roll: Math.atan2(R[2][1], R[2][2]), pitch: Math.asin(clamp(-R[2][0], -1, 1)), yaw: Math.atan2(R[1][0], R[0][0]) });
+const deg = (r) => r * 180 / Math.PI, rad = (d) => d * Math.PI / 180;
+
+/* symmetric eigen-decomposition (cyclic Jacobi), any n; returns [{val, vec}] sorted descending */
+function eigSym(S) {
+  const n = S.length, a = S.map(r => r.slice()), V = Array.from({ length: n }, (_, i) => Array.from({ length: n }, (_, j) => +(i === j)));
+  for (let sweep = 0; sweep < 30; sweep++) {
+    let off = 0; for (let p = 0; p < n; p++) for (let q = p + 1; q < n; q++) off += Math.abs(a[p][q]);
+    if (off < 1e-13) break;
+    for (let p = 0; p < n; p++) for (let q = p + 1; q < n; q++) {
+      if (Math.abs(a[p][q]) < 1e-16) continue;
+      const th = (a[q][q] - a[p][p]) / (2 * a[p][q]);
+      const t = (th >= 0 ? 1 : -1) / (Math.abs(th) + Math.sqrt(th * th + 1));
+      const c = 1 / Math.sqrt(t * t + 1), s = t * c;
+      for (let k = 0; k < n; k++) { const x = a[k][p], y = a[k][q]; a[k][p] = c * x - s * y; a[k][q] = s * x + c * y; }
+      for (let k = 0; k < n; k++) { const x = a[p][k], y = a[q][k]; a[p][k] = c * x - s * y; a[q][k] = s * x + c * y; }
+      for (let k = 0; k < n; k++) { const x = V[k][p], y = V[k][q]; V[k][p] = c * x - s * y; V[k][q] = s * x + c * y; }
+    }
+  }
+  return Array.from({ length: n }, (_, i) => ({ val: a[i][i], vec: V.map(r => r[i]) })).sort((x, y) => y.val - x.val);
+}
+/* dense linear algebra for small problems */
+function solveLin(A, b) { // Gaussian elimination with partial pivoting; returns x or null
+  const n = b.length, M = A.map((r, i) => [...r, b[i]]);
+  for (let c = 0; c < n; c++) {
+    let p = c; for (let r = c + 1; r < n; r++) if (Math.abs(M[r][c]) > Math.abs(M[p][c])) p = r;
+    if (Math.abs(M[p][c]) < 1e-14) return null;
+    [M[c], M[p]] = [M[p], M[c]];
+    const piv = M[c][c];
+    for (let r = c + 1; r < n; r++) { const f = M[r][c] / piv; if (!f) continue; const Mr = M[r], Mc = M[c]; for (let k = c; k <= n; k++) Mr[k] -= f * Mc[k]; }
+  }
+  const x = new Array(n).fill(0);
+  for (let r = n - 1; r >= 0; r--) { let s = M[r][n]; for (let k = r + 1; k < n; k++) s -= M[r][k] * x[k]; x[r] = s / M[r][r]; }
+  return x;
+}
+function invMat(A) { // Gauss-Jordan
+  const n = A.length, M = A.map((r, i) => [...r, ...Array.from({ length: n }, (_, j) => +(i === j))]);
+  for (let c = 0; c < n; c++) {
+    let p = c; for (let r = c + 1; r < n; r++) if (Math.abs(M[r][c]) > Math.abs(M[p][c])) p = r;
+    if (Math.abs(M[p][c]) < 1e-15) return null;
+    [M[c], M[p]] = [M[p], M[c]];
+    const piv = M[c][c]; for (let k = 0; k < 2 * n; k++) M[c][k] /= piv;
+    for (let r = 0; r < n; r++) if (r !== c) { const f = M[r][c]; if (!f) continue; const Mr = M[r], Mc = M[c]; for (let k = 0; k < 2 * n; k++) Mr[k] -= f * Mc[k]; }
+  }
+  return M.map(r => r.slice(n));
+}
+const zeros = (n, m) => Array.from({ length: n }, () => new Array(m).fill(0));
+
+/* colour ramp (low → high) */
+const RAMP = ['#1a73e8', '#00838f', '#188038', '#e3a400', '#e37400', '#d93025'];
+function ramp(t) {
+  t = clamp(t, 0, 1) * (RAMP.length - 1); const i = Math.min(RAMP.length - 2, Math.floor(t)), f = t - i;
+  const A = parseInt(RAMP[i].slice(1), 16), B = parseInt(RAMP[i + 1].slice(1), 16);
+  const ch = (s) => Math.round(lerp(A >> s & 255, B >> s & 255, f));
+  return `rgb(${ch(16)},${ch(8)},${ch(0)})`;
+}
+
+/* ---------------- the view ---------------- */
+function view3d(parent, o = {}) {
+  parent.classList.add('v3stage');
+  const st = makeCanvas(parent, o.aspect || .58, o.minH || 300, o.maxH || 640);
+  const c = st.c; c.style.touchAction = 'pan-y'; c.style.cursor = 'grab';
+  const cam = st.cam = { yaw: o.yaw ?? -2.2, pitch: o.pitch ?? .55, dist: o.dist ?? 14, target: (o.target || [0, 0, 0]).slice(), fov: o.fov || .85 };
+  const home = () => ({ yaw: o.yaw ?? -2.2, pitch: o.pitch ?? .55, dist: o.dist ?? 14, target: (o.target || [0, 0, 0]).slice() });
+  st.auto = o.auto ?? true; st.autoSpeed = o.autoSpeed ?? .07; st.lastUser = -1e9; st.goal = null;
+  st.minDist = o.minDist || 1.5; st.maxDist = o.maxDist || 200;
+  let drag = null;
+  const now = () => performance.now();
+  c.addEventListener('pointerdown', (e) => {
+    drag = { x: e.clientX, y: e.clientY, yaw: cam.yaw, pitch: cam.pitch, t: cam.target.slice(), pan: e.shiftKey || e.button === 2, moved: false };
+    try { c.setPointerCapture(e.pointerId); } catch (_) { }
+    c.style.cursor = 'grabbing'; st.lastUser = now(); st.goal = null; hideTip();
+  });
+  c.addEventListener('pointermove', (e) => {
+    if (!drag) { st.hover(e); return; }
+    const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+    if (Math.abs(dx) + Math.abs(dy) > 3) drag.moved = true;
+    if (drag.pan) {
+      const E = st.E; if (!E) return; const k = cam.dist / st.h * 1.1;
+      cam.target = v3.a(drag.t, v3.a(v3.k(E.right, -dx * k), v3.k(E.up, dy * k)));
+    } else { cam.yaw = drag.yaw - dx * .008; cam.pitch = clamp(drag.pitch + dy * .006, -.2, 1.52); }
+    st.lastUser = now();
+  });
+  const end = (e) => { if (drag && !drag.moved && st.onclick) st.onclick(e); drag = null; c.style.cursor = 'grab'; };
+  c.addEventListener('pointerup', end); c.addEventListener('pointercancel', () => { drag = null; c.style.cursor = 'grab'; });
+  c.addEventListener('pointerleave', () => hideTip());
+  c.addEventListener('contextmenu', (e) => e.preventDefault());
+  c.addEventListener('wheel', (e) => { if (!e.ctrlKey && !e.metaKey && !e.altKey) return; e.preventDefault(); cam.dist = clamp(cam.dist * Math.exp(e.deltaY * .0025), st.minDist, st.maxDist); st.lastUser = now(); st.goal = null; }, { passive: false });
+  const zoom = (f) => { st.goal = null; cam.dist = clamp(cam.dist * f, st.minDist, st.maxDist); st.lastUser = now(); };
+  const autoBtn = h('button', { title: 'Auto-rotate', 'aria-label': 'Toggle auto-rotate', class: st.auto ? 'on' : '', onclick: () => { st.auto = !st.auto; autoBtn.classList.toggle('on', st.auto); } }, '↻');
+  const ctl = h('div', { class: 'v3ctl' },
+    h('button', { title: 'Zoom in', 'aria-label': 'Zoom in', onclick: () => zoom(1 / 1.25) }, '+'),
+    h('button', { title: 'Zoom out', 'aria-label': 'Zoom out', onclick: () => zoom(1.25) }, '−'),
+    h('button', { title: 'Reset view', 'aria-label': 'Reset view', onclick: () => { st.goal = home(); st.lastUser = -1e9; } }, '⟲'),
+    autoBtn);
+  parent.append(ctl);
+  st.hint = o.hint !== false;
+  st.setAuto = (v) => { st.auto = v; autoBtn.classList.toggle('on', v); };
+  st.goTo = (g) => { st.goal = Object.assign({}, g, g.target ? { target: g.target.slice() } : {}); };
+  st.setHome = (g) => { Object.assign(o, g); };
+  // hover targets
+  st.hots = [];
+  st.hover = (e) => {
+    const r = c.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+    let best = null, bd = 1e9;
+    for (const ht of st.hots) { const d = Math.hypot(ht.x - x, ht.y - y); if (d < ht.r + 6 && d < bd) { bd = d; best = ht; } }
+    if (best) { showTip(typeof best.html === 'function' ? best.html() : best.html, e.clientX, e.clientY); c.style.cursor = 'help'; }
+    else { hideTip(); c.style.cursor = 'grab'; }
+  };
+  /* --- frame --- */
+  st.begin = (dt = 0) => {
+    if (st.goal) {
+      const g = st.goal, k = 1 - Math.exp(-dt * 4);
+      if (g.yaw != null) { let dy = g.yaw - cam.yaw; dy = Math.atan2(Math.sin(dy), Math.cos(dy)); cam.yaw += dy * k; }
+      if (g.pitch != null) cam.pitch += (g.pitch - cam.pitch) * k;
+      if (g.dist != null) cam.dist += (g.dist - cam.dist) * k;
+      if (g.target) cam.target = v3.l(cam.target, g.target, k);
+    } else if (st.auto && now() - st.lastUser > 3000) cam.yaw += st.autoSpeed * dt;
+    const { w, h: H } = st;
+    const cp = Math.cos(cam.pitch), sp = Math.sin(cam.pitch);
+    const eye = [cam.target[0] + cam.dist * cp * Math.cos(cam.yaw), cam.target[1] + cam.dist * cp * Math.sin(cam.yaw), cam.target[2] + cam.dist * sp];
+    const fwd = v3.u(v3.s(cam.target, eye)); const right = v3.u(v3.x(fwd, [0, 0, 1])); const up = v3.x(right, fwd);
+    st.E = { eye, fwd, right, up, f: (H / 2) / Math.tan(cam.fov / 2), cx: w / 2, cy: H / 2 };
+    st.items = []; st.texts = []; st.hots = [];
+    st.ctx.clearRect(0, 0, w, H);
+  };
+  const P = st.P = (p) => {
+    const E = st.E; const dx = p[0] - E.eye[0], dy = p[1] - E.eye[1], dz = p[2] - E.eye[2];
+    const z = dx * E.fwd[0] + dy * E.fwd[1] + dz * E.fwd[2]; if (z < .08) return null;
+    return { x: E.cx + E.f * (dx * E.right[0] + dy * E.right[1] + dz * E.right[2]) / z, y: E.cy - E.f * (dx * E.up[0] + dy * E.up[1] + dz * E.up[2]) / z, z, k: E.f / z };
+  };
+  /* --- primitives (queued, depth-sorted at flush) --- */
+  st.line = (a, b, col, lw = 1, op = {}) => {
+    const n = op.seg || 1;
+    for (let i = 0; i < n; i++) {
+      const A = P(n === 1 ? a : v3.l(a, b, i / n)), B = P(n === 1 ? b : v3.l(a, b, (i + 1) / n)); if (!A || !B) continue;
+      st.items.push({ t: 'l', z: (A.z + B.z) / 2 + (op.zb || 0), x1: A.x, y1: A.y, x2: B.x, y2: B.y, c: col, w: lw, a: op.alpha ?? 1, dash: op.dash });
+    }
+  };
+  st.path = (pts, col, lw = 1.4, op = {}) => { for (let i = 1; i < pts.length; i++) st.line(pts[i - 1], pts[i], col, lw, op); };
+  st.dot = (p, r, col, op = {}) => {
+    const A = P(p); if (!A) return null; const rr = op.world ? Math.max(.6, r * A.k) : r;
+    st.items.push({ t: 'p', z: A.z + (op.zb || 0), x: A.x, y: A.y, r: rr, c: col, a: op.alpha ?? 1, ring: op.ring, sq: op.sq, lw: op.lw });
+    if (op.tip) st.hots.push({ x: A.x, y: A.y, r: Math.max(5, rr), html: op.tip });
+    return A;
+  };
+  st.face = (pts, fill, op = {}) => {
+    const S = []; let z = 0; for (const p of pts) { const A = P(p); if (!A) return; S.push(A); z += A.z; }
+    if (op.cull) { let ar = 0; for (let i = 0; i < S.length; i++) { const A = S[i], B = S[(i + 1) % S.length]; ar += A.x * B.y - B.x * A.y; } if ((op.cull > 0 ? ar : -ar) < 0) return; }
+    let col = fill;
+    if (op.normal && fill && fill[0] === '#') { const L = v3.u([.35, .55, .9]); const sh = .62 + .38 * Math.abs(v3.d(op.normal, L)); col = shade(fill, sh); }
+    st.items.push({ t: 'f', z: z / S.length + (op.zb || 0), S, c: col, s: op.stroke, w: op.lw || 1, a: op.alpha ?? 1, sa: op.salpha ?? 1 });
+  };
+  st.text = (p, txt, col = COL.ink, op = {}) => { const A = P(p); if (!A) return; st.texts.push({ x: A.x + (op.dx || 0), y: A.y + (op.dy || 0), txt, c: col, size: op.size || 10.5, align: op.align || 'left', bg: op.bg, w: op.weight || 500, z: A.z }); };
+  st.ellipseSplat = (p, ax1, ax2, col, alpha = .5) => { // oriented disc via 2 tangent axes (world)
+    const A = P(p), B = P(v3.a(p, ax1)), C = P(v3.a(p, ax2)); if (!A || !B || !C) return;
+    st.items.push({ t: 'e', z: A.z, x: A.x, y: A.y, ux: B.x - A.x, uy: B.y - A.y, vx: C.x - A.x, vy: C.y - A.y, c: col, a: alpha });
+  };
+  st.custom = (z, fn) => st.items.push({ t: 'fn', z, fn });
+  /* --- flush --- */
+  st.flush = () => {
+    const ctx = st.ctx; const items = st.items; items.sort((a, b) => b.z - a.z);
+    for (const it of items) {
+      ctx.globalAlpha = it.a;
+      if (it.t === 'l') { ctx.strokeStyle = it.c; ctx.lineWidth = it.w; if (it.dash) ctx.setLineDash(it.dash); ctx.beginPath(); ctx.moveTo(it.x1, it.y1); ctx.lineTo(it.x2, it.y2); ctx.stroke(); if (it.dash) ctx.setLineDash([]); }
+      else if (it.t === 'p') {
+        if (it.sq) { ctx.fillStyle = it.c; ctx.fillRect(it.x - it.r, it.y - it.r, it.r * 2, it.r * 2); }
+        else { ctx.beginPath(); ctx.arc(it.x, it.y, it.r, 0, TAU); if (it.ring) { ctx.fillStyle = '#fff'; ctx.fill(); ctx.strokeStyle = it.c; ctx.lineWidth = it.lw || 1.6; ctx.stroke(); } else { ctx.fillStyle = it.c; ctx.fill(); } }
+      }
+      else if (it.t === 'f') { ctx.beginPath(); ctx.moveTo(it.S[0].x, it.S[0].y); for (let i = 1; i < it.S.length; i++) ctx.lineTo(it.S[i].x, it.S[i].y); ctx.closePath(); if (it.c) { ctx.fillStyle = it.c; ctx.fill(); } if (it.s) { ctx.globalAlpha = it.a * it.sa; ctx.strokeStyle = it.s; ctx.lineWidth = it.w; ctx.stroke(); } }
+      else if (it.t === 'e') { ctx.save(); ctx.transform(it.ux, it.uy, it.vx, it.vy, it.x, it.y); ctx.beginPath(); ctx.arc(0, 0, 1, 0, TAU); ctx.restore(); ctx.fillStyle = it.c; ctx.fill(); }
+      else if (it.t === 'fn') it.fn(ctx);
+    }
+    ctx.globalAlpha = 1;
+    for (const t of st.texts) {
+      ctx.font = `${t.w} ${t.size}px "JetBrains Mono", monospace`; ctx.textAlign = t.align; ctx.textBaseline = 'middle';
+      if (t.bg) { const tw = ctx.measureText(t.txt).width; const x0 = t.align === 'center' ? t.x - tw / 2 : t.align === 'right' ? t.x - tw : t.x; ctx.fillStyle = t.bg; rrect(ctx, x0 - 5, t.y - t.size * .75, tw + 10, t.size * 1.5, 5); ctx.fill(); }
+      ctx.fillStyle = t.c; ctx.fillText(t.txt, t.x, t.y);
+    }
+    ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+    if (st.hint && st.w > 420) { ctx.font = '500 10px "JetBrains Mono", monospace'; ctx.fillStyle = '#9a9aa0'; ctx.fillText('drag: rotate · shift-drag: pan · +/−: zoom', 12, st.h - 10); }
+  };
+  /* --- helpers --- */
+  st.grid = (x0, x1, y0, y1, step = 1, z = 0, col = COL.hair, a = 1) => {
+    for (let x = x0; x <= x1 + 1e-9; x += step) st.line([x, y0, z], [x, y1, z], col, 1, { seg: Math.max(1, Math.round((y1 - y0) / step / 2)), alpha: a, zb: 1e3 });
+    for (let y = y0; y <= y1 + 1e-9; y += step) st.line([x0, y, z], [x1, y, z], col, 1, { seg: Math.max(1, Math.round((x1 - x0) / step / 2)), alpha: a, zb: 1e3 });
+  };
+  st.axes = (p, R = m3.I(), L = 1, op = {}) => {
+    const cols = ['#d93025', '#188038', '#1a73e8'], names = op.names || ['x', 'y', 'z'];
+    for (let j = 0; j < 3; j++) { const e = v3.a(p, v3.k(m3.col(R, j), L)); st.arrow(p, e, cols[j], op.lw || 2); if (op.labels !== false) st.text(e, names[j], cols[j], { dx: 4, size: 10, weight: 600 }); }
+  };
+  st.arrow = (a, b, col, lw = 1.6, op = {}) => {
+    st.line(a, b, col, lw, op);
+    const A = P(a), B = P(b); if (!A || !B) return;
+    const ang = Math.atan2(B.y - A.y, B.x - A.x), hs = op.head || 7;
+    st.items.push({ t: 'f', z: B.z - .001, S: [{ x: B.x, y: B.y }, { x: B.x - hs * Math.cos(ang - .4), y: B.y - hs * Math.sin(ang - .4) }, { x: B.x - hs * Math.cos(ang + .4), y: B.y - hs * Math.sin(ang + .4) }], c: col, a: op.alpha ?? 1 });
+  };
+  st.ring = (cen, R, r, col, lw = 1, op = {}) => { // circle in R's local xy plane
+    const n = op.n || 28, a0 = op.a0 || 0, a1 = op.a1 ?? TAU; let prev = null;
+    for (let i = 0; i <= n; i++) { const a = lerp(a0, a1, i / n); const p = v3.a(cen, m3.v(R, [r * Math.cos(a), r * Math.sin(a), 0])); if (prev) st.line(prev, p, col, lw, op); prev = p; }
+  };
+  st.box = (mn, mx, fill, op = {}) => {
+    const [x0, y0, z0] = mn, [x1, y1, z1] = mx;
+    const F = [
+      [[x0, y0, z0], [x1, y0, z0], [x1, y1, z0], [x0, y1, z0], [0, 0, -1]], [[x0, y0, z1], [x0, y1, z1], [x1, y1, z1], [x1, y0, z1], [0, 0, 1]],
+      [[x0, y0, z0], [x0, y0, z1], [x1, y0, z1], [x1, y0, z0], [0, -1, 0]], [[x0, y1, z0], [x1, y1, z0], [x1, y1, z1], [x0, y1, z1], [0, 1, 0]],
+      [[x0, y0, z0], [x0, y1, z0], [x0, y1, z1], [x0, y0, z1], [-1, 0, 0]], [[x1, y0, z0], [x1, y0, z1], [x1, y1, z1], [x1, y1, z0], [1, 0, 0]],
+    ];
+    const eye = st.E.eye;
+    for (const f of F) {
+      const n = f[4]; const ctr = v3.k(v3.a(v3.a(f[0], f[1]), v3.a(f[2], f[3])), .25);
+      const facing = v3.d(n, v3.s(eye, ctr)) > 0;
+      if (op.inside ? facing : !facing) { if (!op.both) continue; }
+      if (op.skipFloor && n[2] === -1) continue; if (op.skipTop && n[2] === 1) continue;
+      st.face(f.slice(0, 4), fill, { normal: n, stroke: op.stroke, lw: op.lw || 1, alpha: op.alpha ?? 1, salpha: op.salpha, zb: op.zb || 0 });
+    }
+  };
+  // ellipsoid from covariance (3x3) with scale k (sigma multiplier); draws filled projected silhouette + 3 principal rings
+  st.ellipsoid = (cen, S, col, op = {}) => {
+    const k = op.k || 1, E = eigSym(S); const ax = E.map(e => v3.k(e.vec, k * Math.sqrt(Math.max(0, e.val))));
+    const maxA = op.cap || 1e9; for (let i = 0; i < 3; i++) { const L = v3.n(ax[i]); if (L > maxA) ax[i] = v3.k(ax[i], maxA / L); }
+    const A = P(cen); if (!A) return;
+    // projected silhouette ≈ J Σ Jᵀ (affine approx at centre)
+    const Ed = st.E, d = v3.s(cen, Ed.eye), z = v3.d(d, Ed.fwd), dr = v3.d(d, Ed.right), du = v3.d(d, Ed.up);
+    const jx = v3.k(v3.s(v3.k(Ed.right, z), v3.k(Ed.fwd, dr)), Ed.f / (z * z)), jy = v3.k(v3.s(v3.k(Ed.up, z), v3.k(Ed.fwd, du)), -Ed.f / (z * z));
+    let a = 0, b = 0, cc = 0; for (const v of ax) { const px = v3.d(jx, v), py = v3.d(jy, v); a += px * px; b += px * py; cc += py * py; }
+    const tr = a + cc, det = a * cc - b * b, disc = Math.sqrt(Math.max(0, tr * tr / 4 - det)), l1 = tr / 2 + disc, l2 = Math.max(0, tr / 2 - disc);
+    const ang = Math.atan2(l1 - a, b || 1e-9);
+    st.items.push({ t: 'fn', z: A.z + .02, fn: (ctx) => { ctx.globalAlpha = op.fill ?? .12; ctx.fillStyle = col; ctx.beginPath(); ctx.ellipse(A.x, A.y, Math.sqrt(l1) + .5, Math.sqrt(l2) + .5, Math.abs(b) < 1e-12 ? (a >= cc ? 0 : Math.PI / 2) : ang, 0, TAU); ctx.fill(); } });
+    if (op.rings !== false) for (const [i, j] of [[0, 1], [1, 2], [0, 2]]) {
+      let prev = null; for (let s = 0; s <= 32; s++) { const t = s / 32 * TAU; const p = v3.a(cen, v3.a(v3.k(ax[i], Math.cos(t)), v3.k(ax[j], Math.sin(t)))); if (prev) st.line(prev, p, col, op.lw || 1, { alpha: op.ralpha ?? .7 }); prev = p; }
+    }
+    return { axes: ax, eig: E };
+  };
+  // camera frustum: C position, R camera→world (cam axes x right, y down, z forward)
+  st.frustum = (C, R, op = {}) => {
+    const fx = op.fovx || rad(70), fy = op.fovy || rad(54), d = op.depth || 1, col = op.col || COL.ink;
+    const cx = Math.tan(fx / 2) * d, cy = Math.tan(fy / 2) * d;
+    const cs = [[-cx, -cy, d], [cx, -cy, d], [cx, cy, d], [-cx, cy, d]].map(p => v3.a(C, m3.v(R, p)));
+    for (const p of cs) st.line(C, p, col, op.lw || 1.2, { alpha: op.alpha ?? 1, dash: op.dash });
+    for (let i = 0; i < 4; i++) st.line(cs[i], cs[(i + 1) % 4], col, op.lw || 1.2, { alpha: op.alpha ?? 1, dash: op.dash });
+    if (op.fill) st.face(cs, op.fill, { alpha: op.falpha ?? .12 });
+    // "up" tick on the top edge
+    st.line(v3.k(v3.a(cs[0], cs[1]), .5), v3.a(v3.k(v3.a(cs[0], cs[1]), .5), m3.v(R, [0, -cy * .35, 0])), col, op.lw || 1.2, { alpha: op.alpha ?? 1 });
+    st.dot(C, 2.5, col, { alpha: op.alpha ?? 1 });
+    return cs;
+  };
+  // quadrotor at p with body rotation R (x forward, y left, z up)
+  st.drone = (p, R = m3.I(), col = COL.ink, s = 1, op = {}) => {
+    const arm = .26 * s, rr = .12 * s;
+    const pts = [[arm, arm, 0], [-arm, -arm, 0], [arm, -arm, 0], [-arm, arm, 0]].map(q => v3.a(p, m3.v(R, q)));
+    st.line(pts[0], pts[1], col, 2.2 * Math.min(1.4, s), { alpha: op.alpha ?? 1 }); st.line(pts[2], pts[3], col, 2.2 * Math.min(1.4, s), { alpha: op.alpha ?? 1 });
+    for (const q of pts) st.ring(q, R, rr, col, 1.2, { n: 14, alpha: op.alpha ?? 1 });
+    st.box(v3.a(p, [-.06 * s, -.05 * s, -.03 * s]), v3.a(p, [.06 * s, .05 * s, .03 * s]), col, { alpha: op.alpha ?? 1 });
+    st.arrow(p, v3.a(p, m3.v(R, [.42 * s, 0, 0])), op.nose || COL.vis, 2, { alpha: op.alpha ?? 1, head: 6 });
+  };
+  st.overlay = null;
+  return st;
+}
+function shade(hex, k) { const n = parseInt(hex.slice(1), 16); const f = (v) => Math.round(clamp(v * k, 0, 255)); return `rgb(${f(n >> 16 & 255)},${f(n >> 8 & 255)},${f(n & 255)})`; }
+
+/* =====================================================================
+   3D MISSION REPLAY — the same flight as the 2D view, extruded.
+   ===================================================================== */
+const WALLH = { wall: 3.0, plain: 3.0, rack: 2.2 };
+const FEAT3 = (() => { const r = rng(91); return WORLD.feats.map(f => ({ src: f, x: f.x, y: f.y, thermalOnly: f.thermalOnly, z: f.seg && f.seg.kind === 'rack' ? .25 + r() * 1.8 : .25 + r() * 2.5 })); })();
+const FEAT3BY = new Map(FEAT3.map(F => [F.src, F]));
+const droneZ = (t) => 1.35 + .3 * Math.sin(t * .45) + .12 * Math.sin(t * 1.3);
+function missionView3d(parent, keys, opts = {}) {
+  const st = view3d(parent, { aspect: opts.aspect || .56, yaw: -1.95, pitch: .78, dist: 34, target: [WORLD.W / 2, WORLD.H / 2, 0], auto: false, minH: opts.minH || 320 });
+  const runs = keys.map(getRun); const cols = opts.colors || runs.map(r => r.P.col); const names = opts.names || runs.map(r => r.P.name);
+  st.k = 0; st.mode = opts.mode || 'orbit'; st.speedMul = 1; st.showMap = true;
+  const smoke = (() => { const r = rng(5); const z = WORLD.zones.smoke; return Array.from({ length: 140 }, () => { const a = r() * TAU, d = Math.sqrt(r()) * z.r; return { x: z.cx + Math.cos(a) * d, y: z.cy + Math.sin(a) * d, z: r() * 2.6 + .1, ph: r() * TAU }; }); })();
+  // UI: mode toggle + scrub
+  const bar = h('div', { class: 'v3bar' });
+  const modeBtns = [['orbit', 'Orbit'], ['chase', 'Chase cam'], ['top', 'Top-down']].map(([k, t]) => h('button', { class: 'btn btn-sm btn-tonal' + (st.mode === k ? ' on' : ''), onclick: (e) => { st.mode = k; modeBtns.forEach(b => b.classList.remove('on')); e.currentTarget.classList.add('on'); if (k === 'orbit') st.goTo({ yaw: -1.95, pitch: .78, dist: 34, target: [WORLD.W / 2, WORLD.H / 2, 0] }); if (k === 'top') st.goTo({ pitch: 1.5, dist: 40, target: [WORLD.W / 2, WORLD.H / 2, 0], yaw: -Math.PI / 2 }); } }, t));
+  const scrub = h('input', { type: 'range', min: 0, max: MISSION.steps, value: 0, step: 1, 'aria-label': 'Scrub mission time', oninput: (e) => { st.k = +e.target.value; } });
+  const play = h('button', { class: 'btn btn-sm btn-tonal', onclick: (e) => { st.paused = !st.paused; e.currentTarget.textContent = st.paused ? '▶ Play' : '❚❚ Pause'; } }, '❚❚ Pause');
+  bar.append(...modeBtns, play, h('span', { class: 'mono mute', style: 'font-size:11px' }, 'time'), scrub);
+  parent.parentElement && parent.after(bar);
+  const leg = h('div', { class: 'legend' }, h('span', {}, h('i', { class: 'sw', style: 'background:#8e8e93' }), 'true path'), ...runs.map((r, i) => h('span', {}, h('i', { class: 'sw', style: { background: cols[i] } }), names[i])), h('span', {}, h('i', { class: 'sw', style: 'background:#d93025' }), 'LiDAR returns'), h('span', {}, h('i', { class: 'sw', style: 'background:#1a73e8' }), 'tracked camera features'));
+  bar.after(leg);
+  const anyCam = runs.some(r => r.P.cam), anyLid = runs.some(r => r.P.lidar), anyTh = runs.some(r => r.P.thermal);
+  // keep animate running when paused but allow camera motion
+  let pausedK = 0;
+  animate(st, (st, dt) => {
+    if (!st.paused) st.k += dt / MISSION.dt * st.speedMul;
+    if (st.k > MISSION.steps + 45) st.k = 0;
+    const k = Math.min(MISSION.steps, Math.floor(st.k)); if (Math.abs(+scrub.value - k) > 2) scrub.value = k;
+    const g = MISSION.gt[k], sn = MISSION.sn[k], tz = droneZ(g.t);
+    if (st.mode === 'chase') st.goal = { yaw: g.hd + Math.PI, pitch: .42, dist: 7.5, target: [g.x, g.y, tz] };
+    st.begin(dt);
+    // floor + zones
+    st.grid(0, WORLD.W, 0, WORLD.H, 2, 0, '#ececf0');
+    const dz = WORLD.zones.dark; st.face([[dz.x, dz.y, .01], [dz.x + dz.w, dz.y, .01], [dz.x + dz.w, dz.y + dz.h, .01], [dz.x, dz.y + dz.h, .01]], '#1d1d1f', { alpha: .14, zb: 900 });
+    st.text([dz.x + dz.w / 2, dz.y + 1.2, .05], 'LOW LIGHT · LIGHTS OFF', '#55555a', { align: 'center', size: 9.5 });
+    const cz = WORLD.zones.corridor; st.face([[cz.x, cz.y, .01], [cz.x + cz.w, cz.y, .01], [cz.x + cz.w, cz.y + cz.h, .01], [cz.x, cz.y + cz.h, .01]], COL.lid, { alpha: .05, zb: 900 });
+    st.text([cz.x + cz.w / 2, cz.y + cz.h / 2, .05], 'LONG CORRIDOR', COL.lid, { align: 'center', size: 9.5 });
+    st.text([WORLD.zones.smoke.cx, WORLD.zones.smoke.cy - WORLD.zones.smoke.r - .4, .05], 'SMOKE', '#6e6e73', { align: 'center', size: 9.5 });
+    // corridor intensity stripes on the floor
+    for (const x of WORLD.stripes) st.face([[x, cz.y + .2, .015], [x + .5, cz.y + .2, .015], [x + .5, cz.y + cz.h - .2, .015], [x, cz.y + cz.h - .2, .015]], '#c9c9cf', { alpha: .55, zb: 899 });
+    // walls
+    for (const s of WORLD.segs) {
+      const H = WALLH[s.kind] || 3; const a = [s.x1, s.y1, 0], b = [s.x2, s.y2, 0], b2 = [s.x2, s.y2, H], a2 = [s.x1, s.y1, H];
+      const n = v3.u([-(s.y2 - s.y1), s.x2 - s.x1, 0]);
+      st.face([a, b, b2, a2], s.kind === 'rack' ? '#b06000' : '#9aa0a6', { normal: n, alpha: s.kind === 'rack' ? .16 : .1, stroke: '#5f6368', salpha: 2.6, lw: .8 });
+    }
+    // features (texture) on walls
+    const tracked = new Set(sn.camList);
+    for (const f of FEAT3) {
+      if (f.thermalOnly) { if (anyTh) st.dot([f.x, f.y, f.z], 2, '#e37400', { alpha: .55 }); continue; }
+      const on = anyCam && tracked.has(f.src);
+      st.dot([f.x, f.y, f.z], on ? 2.6 : 1.4, on ? COL.vis : '#b8b8bf', { alpha: on ? 1 : .7 });
+    }
+    // smoke particles
+    for (const p of smoke) { const wob = Math.sin(st.t * .6 + p.ph) * .25; st.dot([p.x + wob, p.y + Math.cos(st.t * .5 + p.ph) * .2, p.z + (st.t * .15 + p.ph) % .6], 7, '#8e8e93', { alpha: .09, world: false }); }
+    // true path (full) + estimator trails
+    const gtp = []; for (let i = 0; i <= MISSION.steps; i += 6) { const q = MISSION.gt[i]; gtp.push([q.x, q.y, droneZ(q.t)]); }
+    st.path(gtp, '#8e8e93', 1.2, { dash: [4, 4], alpha: .8 });
+    runs.forEach((run, ri) => {
+      const tr = []; const ofs = ri * 1.7;
+      for (let i = 0; i <= k; i += 3) { const o = run.out[i], q = MISSION.gt[i]; tr.push([o.x, o.y, droneZ(q.t) + o.err * .22 * Math.sin(i * .004 + ofs)]); }
+      const o = run.out[k]; const cur = [o.x, o.y, tz + o.err * .22 * Math.sin(k * .004 + ofs)]; tr.push(cur);
+      st.path(tr, cols[ri], 2);
+      st.dot(cur, 4.5, cols[ri], { ring: true, lw: 2.2, tip: () => `<b>${names[ri]}</b>error now: ${o.err.toFixed(2)} m` });
+      st.line(cur, [g.x, g.y, tz], cols[ri], 1, { dash: [2, 3], alpha: .7 });
+      st.text(cur, names[ri].length > 22 ? names[ri].slice(0, 21) + '…' : names[ri], cols[ri], { dx: 8, dy: -8 - ri * 14, size: 9.5, bg: 'rgba(255,255,255,.82)' });
+    });
+    // drone + sensors
+    const R = m3.mul(m3.rz(g.hd), m3.rx(clamp(-g.yawRate * .04, -.3, .3)));
+    if (anyLid) {
+      for (const hit of sn.hits) {
+        const d = Math.hypot(hit.x - g.x, hit.y - g.y) || 1;
+        for (const el of [-7, 3, 14, 26, 38, 50]) {
+          let z = tz + d * Math.tan(rad(el)), x = hit.x, y = hit.y;
+          if (z < 0) { const t = tz / (tz - z); x = lerp(g.x, hit.x, t); y = lerp(g.y, hit.y, t); z = 0; }
+          if (z > 3) { const t = (3 - tz) / (z - tz); x = lerp(g.x, hit.x, t); y = lerp(g.y, hit.y, t); z = 3; }
+          st.dot([x, y, z], hit.smoke ? 2 : 1.6, hit.smoke ? '#8e8e93' : COL.lid, { alpha: .85 });
+        }
+      }
+      // LiDAR translation-uncertainty ellipsoid from the 2D information matrix (schematic scale)
+      if (sn.l1 > 0) {
+        const s1 = 1 / Math.sqrt(sn.l1 + 1e-3), s2 = 1 / Math.sqrt(Math.max(sn.l2, .02)); const e1 = [sn.ev[0], sn.ev[1], 0], e2 = [-sn.ev[1], sn.ev[0], 0];
+        const Sg = [[0, 0, 0], [0, 0, 0], [0, 0, .004]]; const add = (e, s) => { for (let i = 0; i < 3; i++) for (let j = 0; j < 3; j++) Sg[i][j] += e[i] * e[j] * s * s; };
+        add(e2, s1 * 1.2); add(e1, s2 * 1.2);
+        st.ellipsoid([g.x, g.y, tz], Sg, COL.lid, { k: 1, cap: 6, fill: .1, ralpha: .55 });
+      }
+    }
+    if (anyCam) {
+      const Rc = m3.mul(m3.rz(g.hd), m3.cols([0, -1, 0], [0, 0, -1], [1, 0, 0]));
+      st.frustum([g.x, g.y, tz], Rc, { depth: 1.6, col: sn.dark ? '#5f6368' : COL.vis, fill: COL.vis, falpha: .06, lw: 1 });
+      for (const f of sn.camList.slice(0, 40)) { const F = FEAT3BY.get(f); if (F) st.line([g.x, g.y, tz], [F.x, F.y, F.z], COL.vis, .7, { alpha: .22 }); }
+    }
+    st.drone([g.x, g.y, tz], R, COL.ink, 1.6);
+    st.line([g.x, g.y, tz], [g.x, g.y, 0], COL.ink, .8, { dash: [2, 3], alpha: .4 });
+    // HUD
+    const Ht = [`t ${g.t.toFixed(1)} s   alt ${tz.toFixed(2)} m`, `features ${sn.cam}${sn.dark ? ' · dark' : ''}${sn.blur > .3 ? ' · blur' : ''}`, `LiDAR λmin/λmax ${(sn.l2 / Math.max(1e-6, sn.l1)).toFixed(2)}${sn.inCorr ? ' · corridor' : ''}${sn.smoke ? ' · smoke returns' : ''}`];
+    st.flush();
+    hud(st.ctx, Ht, 12, 18);
+  });
+  return st;
+}
+
+/* =====================================================================
+   3D LAB — six step-by-step lessons. Each scene runs the real maths at
+   small scale (least squares, eigen-decompositions, pose-graph GN);
+   sizes and noise levels are illustrative and labelled as such.
+   ===================================================================== */
+const G0 = 9.81;
+/* ---------- lesson scaffold ---------- */
+function lessonCard(o) {
+  const S = { step: 0, ...(o.state || {}) };
+  const stage = h('div', { class: 'stage' });
+  const ro = h('div', { class: 'lro' });
+  const stepsEl = h('div', { class: 'lsteps' });
+  const ctl = h('div', { class: 'lctl' });
+  const n = o.steps.length;
+  const counter = h('span', { class: 'mono mute', style: 'font-size:11.5px' });
+  const prevB = h('button', { class: 'btn btn-sm btn-tonal', onclick: () => set(S.step - 1) }, '← Back');
+  const nextB = h('button', { class: 'btn btn-sm btn-primary', onclick: () => set(S.step + 1) }, 'Next step →');
+  const items = o.steps.map((s, i) => { const el = h('div', { class: 'lstep' }, h('button', { class: 'lst-h', onclick: () => set(i) }, h('span', { class: 'n' }, String(i + 1)), h('span', {}, s.t)), h('div', { class: 'lst-b', html: s.p })); stepsEl.append(el); return el; });
+  const ctls = [];
+  S.add = (el, steps) => { el.dataset.steps = steps ? steps.join(',') : ''; ctls.push(el); ctl.append(el); return el; };
+  function set(i) {
+    i = clamp(i, 0, n - 1); S.step = i; S.stepT = 0;
+    items.forEach((el, j) => el.classList.toggle('on', j === i));
+    counter.textContent = `step ${i + 1} of ${n}`; prevB.disabled = i === 0; nextB.disabled = i === n - 1;
+    for (const c of ctls) { const ss = c.dataset.steps; c.style.display = !ss || ss.split(',').includes(String(i)) ? '' : 'none'; }
+    o.onStep && o.onStep(S, i); S._rot = 0;
+  }
+  S.set = set;
+  S.ro = (rows, force) => {
+    const t = performance.now(); if (!force && t - (S._rot || 0) < 140) return; S._rot = t;
+    const html = rows.map(r => typeof r === 'string' ? r : `<div class="r${(String(r[0]).length + String(r[1]).length) > 44 ? ' w' : ''}"><span>${r[0]}</span><b${r[2] ? ` style="color:${r[2]}"` : ''}>${r[1]}</b></div>`).join('');
+    if (html !== S._ro) { ro.innerHTML = html; S._ro = html; }
+  };
+  const card = h('article', { class: 'lesson', id: 'lab-' + o.id },
+    h('div', { class: 'lhead' }, h('span', { class: 'lnum' }, o.num), h('div', {}, h('h3', {}, o.title), h('p', { html: o.q }))),
+    h('div', { class: 'lgrid' },
+      h('div', { class: 'lleft' }, h('div', { class: 'simbox' }, stage, h('div', { class: 'simbar' }, h('span', { class: 'mono' }, o.cap), h('span', { class: 'live' }, h('i'), '3D · live'))), ro),
+      h('div', { class: 'lright' }, stepsEl, ctl, h('div', { class: 'lnav' }, prevB, counter, nextB))));
+  requestAnimationFrame(() => { o.build(stage, S); set(o.start || 0); });
+  return card;
+}
+function ctlSlider(label, min, max, step, val, fmt, on) {
+  const out = h('b', {}, fmt(val));
+  const inp = h('input', { type: 'range', min, max, step, value: val, 'aria-label': label, oninput: (e) => { const v = +e.target.value; out.textContent = fmt(v); on(v); } });
+  return h('label', { class: 'ctl' }, h('span', {}, label), inp, out);
+}
+function ctlSeg(label, opts, val, on) {
+  const bs = opts.map(([k, t]) => h('button', { class: 'btn btn-sm btn-tonal' + (k === val ? ' on' : ''), onclick: (e) => { bs.forEach(b => b.classList.remove('on')); e.currentTarget.classList.add('on'); on(k); } }, t));
+  return h('div', { class: 'ctl seg' }, label ? h('span', {}, label) : null, h('div', { class: 'segs' }, ...bs));
+}
+function ctlToggle(label, val, on) {
+  const cb = h('input', { type: 'checkbox', onchange: (e) => on(e.target.checked) }); cb.checked = val;
+  return h('label', { class: 'ctl tog' }, cb, h('span', {}, label));
+}
+function ctlBtns(...bs) { return h('div', { class: 'ctl btns' }, ...bs.map(([t, fn, cls]) => h('button', { class: 'btn btn-sm ' + (cls || 'btn-tonal'), onclick: fn }, t))); }
+const fmtm = (v) => v < .01 ? (v * 1000).toFixed(1) + ' mm' : v < 1 ? (v * 100).toFixed(1) + ' cm' : v.toFixed(2) + ' m';
+const LMCOLS = [COL.vis, COL.lid, COL.fus, COL.spc, COL.lrn, COL.swm];
+
+/* =====================================================================
+   L1 · IMU: the state, what an IMU senses, and why integrating it drifts
+   ===================================================================== */
+const IMU_GRADES = [
+  { k: 0, name: 'Consumer MEMS', ba: .05, bg: rad(.05), th0: rad(.5) },
+  { k: 1, name: 'Industrial MEMS', ba: .01, bg: rad(.005), th0: rad(.1) },
+  { k: 2, name: 'Tactical grade', ba: .001, bg: rad(.0003), th0: rad(.02) },
+];
+function quadTraj(t) {
+  const p = [3 * Math.sin(.5 * t), 1.7 * Math.sin(1.0 * t), 1.6 + .3 * Math.sin(.4 * t)];
+  const v = [1.5 * Math.cos(.5 * t), 1.7 * Math.cos(1.0 * t), .12 * Math.cos(.4 * t)];
+  const a = [-.75 * Math.sin(.5 * t), -1.7 * Math.sin(1.0 * t), -.048 * Math.sin(.4 * t)];
+  const psi = Math.atan2(v[1], v[0]);
+  const zb = v3.u(v3.a(a, [0, 0, G0])), xc = [Math.cos(psi), Math.sin(psi), 0];
+  const yb = v3.u(v3.x(zb, xc)), xb = v3.x(yb, zb);
+  // yaw rate (numerical)
+  const v2 = [1.5 * Math.cos(.5 * (t + .01)), 1.7 * Math.cos(1.0 * (t + .01))]; let dpsi = Math.atan2(v2[1], v2[0]) - psi; dpsi = Math.atan2(Math.sin(dpsi), Math.cos(dpsi));
+  return { p, v, a, R: m3.cols(xb, yb, zb), psi, wz: dpsi / .01 };
+}
+function labIMU() {
+  return lessonCard({
+    id: 'imu', num: 'L1', title: 'The state, the IMU, and why dead reckoning dies',
+    q: 'Every SLAM system on a drone is built around an IMU. What does it actually measure, and why can it not fly the drone alone for more than a few seconds?',
+    cap: 'quadrotor kinematics · Monte-Carlo IMU integration · illustrative sensor grades',
+    state: { grade: 0, T: 0 },
+    steps: [
+      { t: 'Six numbers per instant', p: 'The drone\'s <b>pose</b> is 3 numbers for position (x, y, z) and 3 for orientation (roll, pitch, yaw). The estimator also tracks <b>velocity</b> and the IMU\'s <b>biases</b>, so a typical VIO/LIO state has 15+ numbers. Coloured arrows on the drone are its body axes: <span style="color:#d93025">x forward</span>, <span style="color:#188038">y left</span>, <span style="color:#1a73e8">z up</span>. To accelerate, a quadrotor must <em>tilt</em>: watch roll and pitch change as it turns.' },
+      { t: 'What the IMU senses', p: 'The accelerometer does <b>not</b> measure acceleration. It measures <b>specific force</b> f = a − g: when hovering it reads +9.81 m/s² straight up (blue arrow, along the thrust). The gyroscope measures angular rate ω. To get position, the estimator must (1) integrate ω to get orientation, (2) rotate f into the world, (3) add gravity back, (4) integrate twice. Every error in step 1 contaminates steps 3–4.' },
+      { t: 'Integrate noise twice', p: 'Each faint trace is the same flight, dead-reckoned with an IMU whose bias was drawn at random for that grade (36 runs). The ellipsoid is their 1σ spread. An accelerometer bias b gives ½·b·t² of error; a gyro bias tilts the believed gravity and gives a <b>t³</b> term. Switch grades: a tactical IMU costs thousands of dollars and still only buys tens of seconds.' },
+      { t: 'Tilt error leaks gravity', p: 'The dominant term on small drones: if the believed roll is off by θ, the estimator subtracts gravity in the wrong direction and is left with a phantom horizontal acceleration g·sin θ (red arrow, exaggerated). With θ = 0.5°, that is 0.086 m/s², or 4.3 m after 10 s. This is why every method here pairs the IMU with a camera, LiDAR, radar or thermal sensor that measures position-related quantities.' },
+      { t: 'What can and cannot be observed', p: 'Gravity is a fixed reference direction, so <b>roll and pitch are observable</b> from the IMU over time. Shifting the whole trajectory, or rotating it about the vertical (ghosts), changes no sensor reading — <b>x, y, z and yaw are unobservable</b> in VIO/LIO and drift without bound. That is why VINS-Mono/Fusion run their loop closure as a <b>4-DoF</b> pose graph, and why a drone needs loop closure or external anchors (UWB, known map) for long flights. The red ghost (tilted) is <em>not</em> equivalent: gravity would point a different way.' },
+    ],
+    onStep: (S, i) => { if (i === 2 || i === 3) S.T = 0; },
+    build: (stage, S) => {
+      const st = view3d(stage, { aspect: .62, yaw: -2.3, pitch: .5, dist: 11, target: [0, 0, 1.2], minDist: 3, maxDist: 160 });
+      S.add(ctlSeg('IMU grade (illustrative σ)', IMU_GRADES.map(g => [g.k, g.name]), 0, (k) => { S.grade = k; S.T = 0; mkRuns(); }), [2, 3]);
+      S.add(ctlBtns(['↺ Restart integration', () => { S.T = 0; }]), [2, 3]);
+      let runs = [];
+      const mkRuns = () => { const r = rng(17 + S.grade), g = IMU_GRADES[S.grade]; runs = Array.from({ length: 36 }, () => ({ ba: [gauss(r) * g.ba, gauss(r) * g.ba, gauss(r) * g.ba], bg: [gauss(r) * g.bg, gauss(r) * g.bg], th: [gauss(r) * g.th0, gauss(r) * g.th0] })); };
+      mkRuns();
+      const err = (R, t) => [.5 * R.ba[0] * t * t + G0 * (R.th[1] * t * t / 2 + R.bg[1] * t ** 3 / 6), .5 * R.ba[1] * t * t - G0 * (R.th[0] * t * t / 2 + R.bg[0] * t ** 3 / 6), .5 * R.ba[2] * t * t];
+      const TMAX = 20;
+      animate(st, (st, dt) => {
+        const step = S.step; const mc = step === 2 || step === 3;
+        if (mc) { S.T += dt; if (S.T > TMAX + 2) S.T = 0; }
+        const tt = mc ? Math.min(S.T, TMAX) : st.t; const Q = quadTraj(mc ? tt : st.t);
+        // auto-zoom to the spread
+        st.begin(dt);
+        st.grid(-6, 6, -4, 4, 1, 0, '#ececf0');
+        // full reference path
+        const ref = []; for (let s = 0; s <= 12.6; s += .2) ref.push(quadTraj(s).p); st.path(ref, '#b8b8bf', 1, { dash: [3, 4] });
+        const g = IMU_GRADES[S.grade];
+        if (step === 0) {
+          st.drone(Q.p, Q.R, COL.ink, 2); st.axes(Q.p, Q.R, .9, { names: ['x', 'y', 'z'] });
+          st.line(Q.p, [Q.p[0], Q.p[1], 0], COL.ink, .8, { dash: [2, 3], alpha: .5 });
+          st.axes([-5.5, -3.5, 0], m3.I(), 1, { names: ['E', 'N', 'Up'] }); st.text([-5.5, -3.5, 0], 'world', COL.mute, { dx: -8, dy: 12, size: 9.5 });
+          const e = rpyOf(Q.R);
+          S.ro([['x', Q.p[0].toFixed(2) + ' m'], ['y', Q.p[1].toFixed(2) + ' m'], ['z', Q.p[2].toFixed(2) + ' m'], ['roll', deg(e.roll).toFixed(1) + '°', '#d93025'], ['pitch', deg(e.pitch).toFixed(1) + '°', '#188038'], ['yaw', deg(e.yaw).toFixed(1) + '°', '#1a73e8'], ['speed', v3.n(Q.v).toFixed(2) + ' m/s']]);
+        }
+        if (step === 1) {
+          st.drone(Q.p, Q.R, COL.ink, 2);
+          const f = v3.a(Q.a, [0, 0, G0]); st.arrow(Q.p, v3.a(Q.p, v3.k(f, .13)), COL.vis, 2.6); st.text(v3.a(Q.p, v3.k(f, .13)), 'accelerometer: f = a − g', COL.vis, { dx: 8, size: 10, bg: 'rgba(255,255,255,.85)' });
+          st.arrow(Q.p, v3.a(Q.p, [0, 0, -1.2]), '#8e8e93', 2); st.text(v3.a(Q.p, [0, 0, -1.2]), 'gravity g', '#6e6e73', { dx: 8, size: 10 });
+          st.arrow(Q.p, v3.a(Q.p, v3.k(Q.a, .5)), COL.lrn, 2); st.text(v3.a(Q.p, v3.k(Q.a, .5)), 'true acceleration a', COL.lrn, { dx: 8, dy: 10, size: 10, bg: 'rgba(255,255,255,.85)' });
+          const wr = Q.wz; st.ring(Q.p, Q.R, .75, COL.spc, 2, { a0: 0, a1: clamp(wr, -2, 2) * 1.2, n: 18 }); st.text(v3.a(Q.p, m3.v(Q.R, [.6, .6, 0])), 'gyro ω', COL.spc, { size: 10 });
+          const fb = m3.v(m3.T(Q.R), f);
+          S.ro([['|f| (body)', v3.n(f).toFixed(2) + ' m/s²'], ['f in body x,y,z', fb.map(v => v.toFixed(2)).join(', ')], ['|a| true', v3.n(Q.a).toFixed(2) + ' m/s²'], ['yaw rate ω_z', deg(wr).toFixed(1) + ' °/s', COL.spc], ['note', 'f ≈ (0, 0, |f|): a quad\'s thrust is along body z']]);
+        }
+        if (mc) {
+          // traces
+          const es = runs.map(R => err(R, tt));
+          runs.forEach((R, i) => {
+            const pts = []; for (let s = 0; s <= tt + 1e-6; s += .5) { const e = err(R, s); pts.push(v3.a(quadTraj(s).p, e)); }
+            const e = es[i]; pts.push(v3.a(Q.p, e));
+            const hl = step === 3 && i === 0;
+            st.path(pts, hl ? COL.lid : COL.vis, hl ? 2.2 : .9, { alpha: hl ? 1 : .35 });
+            st.dot(v3.a(Q.p, e), hl ? 3.5 : 2, hl ? COL.lid : COL.vis, { alpha: hl ? 1 : .7 });
+          });
+          // sample covariance
+          const mu = [0, 0, 0]; es.forEach(e => { mu[0] += e[0] / es.length; mu[1] += e[1] / es.length; mu[2] += e[2] / es.length; });
+          const C = zeros(3, 3); es.forEach(e => { const d = v3.s(e, mu); for (let i = 0; i < 3; i++) for (let j = 0; j < 3; j++) C[i][j] += d[i] * d[j] / (es.length - 1); });
+          for (let i = 0; i < 3; i++) C[i][i] += 1e-6;
+          st.ellipsoid(v3.a(Q.p, mu), C, COL.vis, { k: 1, fill: .1 });
+          st.drone(Q.p, Q.R, COL.ink, 1.8);
+          if (step === 3) {
+            const e0 = es[0], P0 = v3.a(Q.p, e0), th = runs[0].th[0] + runs[0].bg[0] * tt;
+            const ex = 40; const gb = [0, Math.sin(th * ex) * 1.4, -Math.cos(th * ex) * 1.4];
+            st.arrow(P0, v3.a(P0, [0, 0, -1.4]), '#8e8e93', 2); st.arrow(P0, v3.a(P0, gb), COL.lid, 2, { dash: [3, 2] });
+            st.arrow(v3.a(P0, [0, 0, -1.4]), v3.a(P0, gb), COL.lid, 2.4);
+            st.text(v3.a(P0, gb), 'believed gravity (tilt ×40)', COL.lid, { dx: 8, size: 9.5, bg: 'rgba(255,255,255,.85)' });
+          }
+          const sd = Math.sqrt(C[0][0] + C[1][1]);
+          if (performance.now() - st.lastUser > 3000) { const want = clamp(9 + sd * 2.4, 9, 140); st.cam.dist += (want - st.cam.dist) * (1 - Math.exp(-dt * 1.5)); }
+          const tA = .5 * g.ba * tt * tt, tTh = G0 * g.th0 * tt * tt / 2, tG = G0 * g.bg * tt ** 3 / 6;
+          const rows = [['time integrated', tt.toFixed(1) + ' s'], ['1σ horizontal spread', fmtm(sd), COL.vis], ['… from accel bias  ½·b·t²', fmtm(tA)], ['… from initial tilt  ½·g·θ·t²', fmtm(tTh)], ['… from gyro bias  g·b_g·t³/6', fmtm(tG)], ['grade σ', `b_a ${g.ba} m/s² · b_g ${deg(g.bg).toFixed(4)} °/s · θ₀ ${deg(g.th0)}°`]];
+          if (step === 3) { const al = G0 * Math.sin(g.th0); rows.push(['leak g·sin θ₀', al.toFixed(3) + ' m/s²', COL.lid], ['→ error after 10 s', fmtm(.5 * al * 100), COL.lid]); }
+          S.ro(rows);
+        }
+        if (step === 4) {
+          const ph = st.t;
+          const ghosts = [[.55 * Math.sin(ph * .7), [1.6 * Math.sin(ph * .5), .8 * Math.cos(ph * .4), .4 * Math.sin(ph * .6)]], [-.9 + .3 * Math.sin(ph * .6), [-1.5, 1.2, -.3]]];
+          st.drone(Q.p, Q.R, COL.ink, 1.8); st.arrow([-5.5, 3.2, 3], [-5.5, 3.2, 1.6], '#8e8e93', 2.5); st.text([-5.5, 3.2, 3], 'g', '#6e6e73', { dx: 6, size: 12, weight: 700 });
+          for (const [ang, sh] of ghosts) {
+            const Rz = m3.rz(ang); const tf = (p) => v3.a(m3.v(Rz, p), sh);
+            st.path(ref.map(tf), COL.vis, 1.2, { alpha: .55 }); st.drone(tf(Q.p), m3.mul(Rz, Q.R), COL.vis, 1.4, { alpha: .6 });
+          }
+          const Rt = m3.rx(rad(22)); const tfb = (p) => v3.a(m3.v(Rt, p), [0, 0, .6]);
+          st.path(ref.map(tfb), COL.lid, 1, { alpha: .5, dash: [4, 3] }); st.text(tfb(ref[8]), 'tilted copy ✗', COL.lid, { size: 10, bg: 'rgba(255,255,255,.85)' });
+          st.text(v3.a(m3.v(m3.rz(ghosts[0][0]), ref[30]), ghosts[0][1]), 'shifted + yawed copy ✓', COL.vis, { size: 10, bg: 'rgba(255,255,255,.85)' });
+          S.ro([['unobservable (drift)', 'x · y · z · yaw', COL.lid], ['observable via gravity', 'roll · pitch', COL.ok], ['needs excitation', 'accel. biases, scale (mono VIO)'], ['consequence', 'loop closure solves a 4-DoF pose graph']]);
+        }
+        st.flush();
+      });
+    }
+  });
+}
+
+/* =====================================================================
+   L2 · CAMERA geometry: rays, triangulation, scale, reprojection, BA
+   ===================================================================== */
+const KCAM = { f: 457, cx: 320, cy: 240, W: 640, H: 480 };
+const RFWD = m3.cols([1, 0, 0], [0, 0, -1], [0, 1, 0]); // camera looking +y: x right, y down, z forward
+function camProj(R, C, p) { const pc = m3.v(m3.T(R), v3.s(p, C)); if (pc[2] < .1) return null; return [KCAM.f * pc[0] / pc[2] + KCAM.cx, KCAM.f * pc[1] / pc[2] + KCAM.cy, pc[2]]; }
+const CAM_LM = (() => {
+  const r = rng(21), L = [];
+  for (let i = 0; i < 34; i++) L.push({ p: [-4.5 + 9 * r(), 7, .2 + 2.7 * r()], g: 'wall' });
+  for (let i = 0; i < 12; i++) L.push({ p: [-4.5, 2 + 5 * r(), .2 + 2.6 * r()], g: 'side' });
+  const box = (c, s, hgt, n) => { for (let i = 0; i < n; i++) { const f = r(); if (f < .6) L.push({ p: [c[0] - s / 2 + s * r(), c[1] - s / 2, hgt * r()], g: 'box' }); else L.push({ p: [c[0] - s / 2 + s * r(), c[1] - s / 2 + s * r(), hgt], g: 'box' }); } };
+  box([-1.7, 3.4], 1, .9, 10); box([1.9, 4.4], 1.2, 1.6, 12);
+  return L.map((l, i) => ({ ...l, c: LMCOLS[i % LMCOLS.length] }));
+})();
+function drawInset(ctx, x, y, w, title, pts, op = {}) {
+  const hh = w * .75, s = w / KCAM.W;
+  ctx.save(); ctx.fillStyle = 'rgba(255,255,255,.96)'; ctx.strokeStyle = op.col || COL.ink; ctx.lineWidth = 1.2; rrect(ctx, x, y, w, hh, 6); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); rrect(ctx, x, y, w, hh, 6); ctx.clip();
+  for (const p of pts) {
+    const px = x + p.u * s, py = y + p.v * s;
+    if (p.pred) { const qx = x + p.pred[0] * s, qy = y + p.pred[1] * s; ctx.strokeStyle = COL.lid; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(px, py); ctx.lineTo(qx, qy); ctx.stroke(); ctx.beginPath(); ctx.arc(qx, qy, 3, 0, TAU); ctx.strokeStyle = COL.lrn; ctx.stroke(); }
+    ctx.fillStyle = p.c || COL.ink; ctx.beginPath(); ctx.arc(px, py, p.big ? 4 : 2.2, 0, TAU); ctx.fill();
+    if (p.big) { ctx.strokeStyle = p.c; ctx.lineWidth = 1; ctx.beginPath(); ctx.arc(px, py, 8, 0, TAU); ctx.stroke(); }
+  }
+  ctx.restore();
+  ctx.font = '600 9.5px "JetBrains Mono", monospace'; ctx.fillStyle = op.col || COL.ink; ctx.fillText(title, x + 6, y + hh + 12);
+}
+function labCam() {
+  return lessonCard({
+    id: 'cam', num: 'L2', title: 'Cameras: rays, depth, scale and bundle adjustment',
+    q: 'A camera turns the 3D world into 2D pixels. How do VIO systems get depth back, why does a single camera lose scale, and what is a "reprojection error"?',
+    cap: 'pinhole model f = 457 px (640×480, ~70° FOV) · Gauss-Newton on 6-DoF pose · seeded pixel noise',
+    state: { B: .12, Z: 5, spx: .5, nF: 40, layout: 'spread', pose: null, iters: [], anim: null },
+    steps: [
+      { t: 'A camera is a ray machine', p: 'Each pixel is a <b>ray</b> out of the optical centre. The highlighted landmark slides along its ray, and its pixel (inset) does not move: <b>one image cannot measure depth</b>. Every landmark here is a feature a front-end such as ORB, FAST or KLT would detect and track.' },
+      { t: 'Two views → triangulated depth', p: 'A second camera a baseline B away sees the same landmark along a different ray; the two rays intersect. Pixel noise σ turns that point into an <b>uncertainty ellipsoid</b> (3σ, drawn to scale) stretched along the viewing direction: σ<sub>depth</sub> ≈ Z²·σ/(f·B), σ<sub>lateral</sub> ≈ Z·σ/f. Depth error grows with the <b>square</b> of distance — stereo on a small drone (B = 5–12 cm) is only metric to a few metres.' },
+      { t: 'One camera: scale is invisible', p: 'A single moving camera triangulates between its own frames, but scaling the <b>entire world and the camera path</b> by any factor s gives identical images (insets do not change while the scene breathes). Monocular VO therefore drifts in scale. <b>VIO fixes scale with the accelerometer</b>, which measures metres per second² — but only while the drone accelerates; constant-velocity flight makes scale unobservable again.' },
+      { t: 'Reprojection error', p: 'Estimating a camera\'s pose = finding the pose whose <b>predicted</b> pixels (orange rings) land on the <b>measured</b> ones (dots). The red lines are residuals. Press <b>Optimise</b>: Gauss–Newton linearises the projection and solves a 6×6 system per iteration; the orange frustum snaps onto the true one in a few steps. Bundle adjustment does exactly this, jointly over many poses and landmarks.' },
+      { t: 'How sure is that pose?', p: 'At the solution, the inverse of JᵀJ times σ² is the pose covariance (ellipsoid at the camera, 3σ). Fewer features — darkness, blur, blank walls — or features crowded on one distant wall make it grow, especially along the optical axis. This is the quantity that "drift" accumulates frame after frame.' },
+    ],
+    onStep: (S, i) => { if (i >= 3 && !S.pose) S.perturb(); },
+    build: (stage, S) => {
+      const st = view3d(stage, { aspect: .62, yaw: -2.0, pitch: .42, dist: 13, target: [0, 3.2, 1.2], minDist: 3, maxDist: 60 });
+      S.add(ctlSlider('baseline B', .03, 1, .01, S.B, v => (v * 100).toFixed(0) + ' cm', v => S.B = v), [1]);
+      S.add(ctlSlider('landmark depth Z', 1, 15, .1, S.Z, v => v.toFixed(1) + ' m', v => S.Z = v), [0, 1]);
+      S.add(ctlSlider('pixel noise σ', .2, 3, .1, S.spx, v => v.toFixed(1) + ' px', v => { S.spx = v; S.meas(); }), [1, 3, 4]);
+      S.add(ctlSlider('features used', 5, 58, 1, S.nF, v => String(v), v => { S.nF = v; }), [3, 4]);
+      S.add(ctlSeg('feature layout', [['spread', 'Spread'], ['far', 'Far wall only'], ['cluster', 'One cluster']], 'spread', k => { S.layout = k; }), [3, 4]);
+      S.add(ctlBtns(['Optimise ▶', () => S.optimise(), 'btn-primary'], ['Perturb pose', () => S.perturb()]), [3, 4]);
+      // camera 2 (the frame being estimated)
+      const R2 = m3.mul(m3.rz(rad(8)), RFWD), C2 = [.7, .3, 1.45];
+      const nz = (() => { const r = rng(4); return CAM_LM.map(() => [gauss(r), gauss(r)]); })();
+      S.meas = () => { S.m = CAM_LM.map((l, i) => { const q = camProj(R2, C2, l.p); return q ? [q[0] + nz[i][0] * S.spx, q[1] + nz[i][1] * S.spx] : null; }); };
+      S.meas();
+      const usable = () => {
+        const idx = CAM_LM.map((l, i) => i).filter(i => { const q = camProj(R2, C2, CAM_LM[i].p); return q && q[0] > 0 && q[0] < 640 && q[1] > 0 && q[1] < 480; });
+        let sel = idx;
+        if (S.layout === 'far') sel = idx.filter(i => CAM_LM[i].g === 'wall');
+        if (S.layout === 'cluster') { sel = idx.slice().sort((a, b) => Math.hypot(CAM_LM[a].p[0] - 2, CAM_LM[a].p[2] - 2) - Math.hypot(CAM_LM[b].p[0] - 2, CAM_LM[b].p[2] - 2)); }
+        return sel.slice(0, S.nF);
+      };
+      const resid = (R, C, ids) => { const r = []; for (const i of ids) { const q = camProj(R, C, CAM_LM[i].p); if (!q) { r.push(50, 50); continue; } r.push(q[0] - S.m[i][0], q[1] - S.m[i][1]); } return r; };
+      const jac = (R, C, ids) => { const r0 = resid(R, C, ids), J = r0.map(() => new Array(6).fill(0)), e = 1e-6; for (let k = 0; k < 6; k++) { const d = [0, 0, 0, 0, 0, 0]; d[k] = e; const R1 = m3.mul(m3.exp(d.slice(0, 3)), R), C1 = v3.a(C, d.slice(3)); const r1 = resid(R1, C1, ids); for (let i = 0; i < r0.length; i++) J[i][k] = (r1[i] - r0[i]) / e; } return { r0, J }; };
+      const normal = (J, r) => { const H = zeros(6, 6), b = new Array(6).fill(0); for (let i = 0; i < J.length; i++) { const Ji = J[i]; for (let a = 0; a < 6; a++) { b[a] -= Ji[a] * r[i]; for (let c = 0; c < 6; c++) H[a][c] += Ji[a] * Ji[c]; } } return { H, b }; };
+      S.perturb = () => { const r = rng(Math.floor(performance.now()) % 997 + 3); S.pose = { R: m3.mul(m3.exp([rad(3) * gauss(r), rad(3) * gauss(r), rad(4) * gauss(r)]), R2), C: v3.a(C2, [.35 * gauss(r), .3 * gauss(r), .2 * gauss(r)]) }; S.anim = null; S.iter = 0; };
+      S.optimise = () => {
+        if (!S.pose) S.perturb();
+        const ids = usable(); let R = S.pose.R, C = S.pose.C; const steps = [];
+        for (let it = 0; it < 8; it++) {
+          const { r0, J } = jac(R, C, ids); const { H, b } = normal(J, r0); for (let a = 0; a < 6; a++) H[a][a] *= 1.0001; const dx = solveLin(H, b); if (!dx) break;
+          steps.push({ R0: R, C0: C, d: dx }); R = m3.mul(m3.exp(dx.slice(0, 3)), R); C = v3.a(C, dx.slice(3));
+          if (Math.hypot(...dx) < 1e-7) break;
+        }
+        S.anim = { steps, i: 0, u: 0 };
+      };
+      animate(st, (st, dt) => {
+        const step = S.step; st.begin(dt);
+        st.grid(-5, 5, -1, 8, 1, 0, '#ececf0');
+        st.face([[-4.5, 7, 0], [4.5, 7, 0], [4.5, 7, 3], [-4.5, 7, 3]], '#9aa0a6', { alpha: .07, stroke: '#9aa0a6', salpha: 3 });
+        st.face([[-4.5, 2, 0], [-4.5, 7, 0], [-4.5, 7, 3], [-4.5, 2, 3]], '#9aa0a6', { alpha: .05, stroke: '#9aa0a6', salpha: 3 });
+        st.box([-2.2, 2.9, 0], [-1.2, 3.9, .9], '#c5c9d0', { alpha: .35, stroke: '#9aa0a6' });
+        st.box([1.3, 3.8, 0], [2.5, 5.0, 1.6], '#c5c9d0', { alpha: .35, stroke: '#9aa0a6' });
+        let scale = 1, C1 = [-S.B / 2, 0, 1.4];
+        if (step === 2) { scale = Math.exp(.55 * Math.sin(st.t * .8)); C1 = [-.3, 0, 1.4]; }
+        const W = (p) => step === 2 ? v3.a(C1, v3.k(v3.s(p, C1), scale)) : p;
+        if (step <= 2) for (const l of CAM_LM) st.dot(W(l.p), 2.6, l.c, { alpha: .9 });
+        const insets = [];
+        if (step === 0 || step === 1) {
+          const Cc = step === 0 ? [0, 0, 1.4] : C1, Cr = [S.B / 2, 0, 1.4];
+          const dir = v3.u(v3.s([.35, 5, 1.25], [0, 0, 1.4]));
+          const Zs = step === 0 ? S.Z * (1 + .45 * Math.sin(st.t * 1.1)) : S.Z;
+          const L = step === 0 ? v3.a(Cc, v3.k(dir, Zs / dir[1])) : [.35, S.Z, 1.25];
+          st.frustum(Cc, RFWD, { depth: .8, col: COL.ink, fill: COL.vis, falpha: .08 });
+          for (const l of CAM_LM) st.line(Cc, l.p, COL.vis, .5, { alpha: .14 });
+          st.line(Cc, v3.a(Cc, v3.k(dir, 16 / dir[1])), COL.lid, 1.2, { dash: [4, 3], alpha: .8 });
+          st.dot(L, 5, COL.lid, { ring: true, lw: 2.4 }); st.text(L, step === 0 ? 'landmark slides along its ray' : 'landmark', COL.lid, { dx: 10, size: 10, bg: 'rgba(255,255,255,.85)' });
+          const pc = camProj(RFWD, Cc, L);
+          insets.push({ t: step === 0 ? 'camera image' : 'left image', pts: [...CAM_LM.map(l => { const q = camProj(RFWD, Cc, l.p); return q && { u: q[0], v: q[1], c: l.c }; }).filter(Boolean), pc && { u: pc[0], v: pc[1], c: COL.lid, big: true }].filter(Boolean) });
+          if (step === 1) {
+            st.frustum(Cr, RFWD, { depth: .8, col: COL.ink, fill: COL.vis, falpha: .08 }); st.line(Cr, L, COL.lid, 1.4); st.line(Cc, L, COL.lid, 1.4);
+            st.line(Cc, Cr, COL.ink, 2.2); st.text(v3.l(Cc, Cr, .5), `B = ${(S.B * 100).toFixed(0)} cm`, COL.ink, { dy: 14, align: 'center', size: 10, bg: 'rgba(255,255,255,.85)' });
+            const sl = S.Z * S.spx / KCAM.f, sd = S.Z * S.Z * S.spx / (KCAM.f * S.B);
+            const Sg = [[sl * sl, 0, 0], [0, sd * sd, 0], [0, 0, sl * sl]];
+            // the noise wedge from each camera
+            for (const Cx of [Cc, Cr]) for (const s of [-1, 1]) st.line(Cx, v3.a(L, [0, s * 3 * sd, 0]), COL.lid, .6, { alpha: .35 });
+            st.ellipsoid(L, Sg, COL.lid, { k: 3, fill: .18, cap: 30 });
+            const pr = camProj(RFWD, Cr, L);
+            insets.push({ t: 'right image', pts: [...CAM_LM.map(l => { const q = camProj(RFWD, Cr, l.p); return q && { u: q[0], v: q[1], c: l.c }; }).filter(Boolean), pr && { u: pr[0], v: pr[1], c: COL.lid, big: true }].filter(Boolean) });
+            const disp = KCAM.f * S.B / S.Z;
+            S.ro([['disparity f·B/Z', disp.toFixed(1) + ' px'], ['σ depth  Z²σ/(fB)', fmtm(sd), COL.lid], ['σ lateral  Zσ/f', fmtm(sl)], ['depth error / depth', (sd / S.Z * 100).toFixed(1) + ' %'], ['useful stereo range (σ<10%)', (.1 * KCAM.f * S.B / S.spx).toFixed(1) + ' m']]);
+          } else S.ro([['landmark depth now', Zs.toFixed(2) + ' m', COL.lid], ['its pixel (u, v)', pc ? `${pc[0].toFixed(1)}, ${pc[1].toFixed(1)}` : '—'], ['pixel change', '0.0 px — depth is unobservable from one view']]);
+        }
+        if (step === 2) {
+          const C1b = v3.a(C1, v3.k([.9, .7, .05], scale));
+          st.frustum(C1, RFWD, { depth: .8 * scale, col: COL.ink, fill: COL.vis, falpha: .08 }); st.frustum(C1b, RFWD, { depth: .8 * scale, col: COL.ink, fill: COL.vis, falpha: .08 });
+          st.arrow(C1, C1b, COL.lrn, 2); st.text(v3.l(C1, C1b, .5), `t = ${(1.14 * scale).toFixed(2)} m ?`, COL.lrn, { dy: 14, size: 10, bg: 'rgba(255,255,255,.85)' });
+          const mk = (C) => CAM_LM.map(l => { const q = camProj(RFWD, C, W(l.p)); return q && { u: q[0], v: q[1], c: l.c }; }).filter(Boolean);
+          insets.push({ t: 'frame k', pts: mk(C1) }, { t: 'frame k+1', pts: mk(C1b) });
+          S.ro([['world scale factor s', scale.toFixed(2) + '×', COL.lrn], ['translation between frames', (1.14 * scale).toFixed(2) + ' m'], ['change in either image', '0.000 px'], ['what fixes it', 'IMU (needs acceleration), stereo baseline, or a known size']]);
+        }
+        if (step >= 3) {
+          if (!S.pose) S.perturb();
+          if (S.anim) { const A = S.anim; if (A.i < A.steps.length) { A.u += dt / .55; const s = A.steps[A.i]; const u = Math.min(1, A.u); S.pose = { R: m3.mul(m3.exp(v3.k(s.d.slice(0, 3), u)), s.R0), C: v3.a(s.C0, v3.k(s.d.slice(3), u)) }; if (A.u >= 1) { A.i++; A.u = 0; S.iter = A.i; } } }
+          const ids = usable(), idset = new Set(ids);
+          CAM_LM.forEach((l, i) => st.dot(l.p, idset.has(i) ? 3 : 2, idset.has(i) ? l.c : '#c8c8ce', { alpha: idset.has(i) ? 1 : .6 }));
+          st.frustum(C2, R2, { depth: .9, col: COL.ink, fill: COL.ink, falpha: .05 }); st.text(C2, 'true pose', COL.ink, { dx: -8, dy: 16, align: 'right', size: 9.5 });
+          st.frustum(S.pose.C, S.pose.R, { depth: .9, col: COL.lrn, lw: 1.8, fill: COL.lrn, falpha: .08 }); st.text(S.pose.C, 'estimate', COL.lrn, { dx: 8, dy: -10, size: 9.5, bg: 'rgba(255,255,255,.85)' });
+          for (const i of ids.slice(0, 26)) st.line(S.pose.C, CAM_LM[i].p, COL.lrn, .5, { alpha: .25 });
+          const r = resid(S.pose.R, S.pose.C, ids); let ss = 0; for (const v of r) ss += v * v; const rms = Math.sqrt(ss / Math.max(1, r.length));
+          insets.push({ t: 'measured (dots) vs predicted (rings)', col: COL.lrn, pts: ids.map((i, k) => ({ u: S.m[i][0], v: S.m[i][1], c: CAM_LM[i].c, pred: [S.m[i][0] + r[2 * k], S.m[i][1] + r[2 * k + 1]] })) });
+          const pe = v3.n(v3.s(S.pose.C, C2)); const Rd = m3.mul(m3.T(R2), S.pose.R); const re = deg(Math.acos(clamp((Rd[0][0] + Rd[1][1] + Rd[2][2] - 1) / 2, -1, 1)));
+          const rows = [['features used', String(ids.length)], ['Gauss–Newton iteration', String(S.iter || 0)], ['RMS reprojection error', rms.toFixed(2) + ' px', rms > 3 * S.spx ? COL.lid : COL.ok], ['position error', fmtm(pe)], ['rotation error', re.toFixed(2) + '°']];
+          if (step === 4 && ids.length >= 3) {
+            const { J } = jac(S.pose.R, S.pose.C, ids); const { H } = normal(J, J.map(() => 0)); const Hi = invMat(H);
+            if (Hi) {
+              const s2 = S.spx * S.spx; const Cp = [[Hi[3][3], Hi[3][4], Hi[3][5]], [Hi[4][3], Hi[4][4], Hi[4][5]], [Hi[5][3], Hi[5][4], Hi[5][5]]].map(r => r.map(v => v * s2));
+              st.ellipsoid(S.pose.C, Cp, COL.lrn, { k: 3, fill: .2, cap: 5 });
+              rows.push(['σ position x / y(depth) / z', [0, 1, 2].map(i => fmtm(Math.sqrt(Cp[i][i]))).join(' · '), COL.lrn], ['σ rotation (roll/pitch/yaw)', [0, 1, 2].map(i => deg(Math.sqrt(Hi[i][i] * s2)).toFixed(3) + '°').join(' · ')]);
+            }
+          }
+          S.ro(rows);
+        }
+        st.flush();
+        const iw = clamp(st.w * .27, 120, 210); insets.forEach((I, k) => drawInset(st.ctx, st.w - iw - 12, 12 + k * (iw * .75 + 26), iw, I.t, I.pts, { col: I.col }));
+      });
+    }
+  });
+}
+
+/* =====================================================================
+   L3 · LiDAR: scan, point-to-plane, information, degeneracy, ICP
+   ===================================================================== */
+const LENV = {
+  room: { name: 'Room', pos: [0, 0, 1.4], el: [-7, 52], prims: [{ k: 'in', mn: [-5, -4, 0], mx: [5, 4, 3] }, { k: 'box', mn: [1, -2.2, 0], mx: [2.6, -1, .9] }, { k: 'box', mn: [-4.6, 1.8, 0], mx: [-3.6, 3.8, 2] }, { k: 'box', mn: [2.3, 1.4, 0], mx: [2.9, 2, 3] }], view: { dist: 15, target: [0, 0, 1] } },
+  corridor: { name: 'Corridor', pos: [0, 0, 1.4], el: [-7, 52], prims: [{ k: 'in', mn: [-70, -1.2, 0], mx: [70, 1.2, 2.8] }], view: { dist: 16, target: [0, 0, 1] } },
+  tunnel: { name: 'Tunnel', pos: [0, 0, 1.3], el: [-7, 52], prims: [{ k: 'cylx', c: [0, 0, 1], r: 2.4 }, { k: 'floor', z: 0 }], view: { dist: 16, target: [0, 0, 1] } },
+  open: { name: 'Open field', pos: [0, 0, 6], el: [-52, 7], prims: [{ k: 'floor', z: 0 }], view: { dist: 34, target: [0, 0, 2] } },
+  shaft: { name: 'Vertical shaft', pos: [0, 0, 12], el: [-7, 52], prims: [{ k: 'cylz', c: [0, 0, 0], r: 2 }], view: { dist: 26, target: [0, 0, 12] } },
+};
+function rayPrim(o, d, P) {
+  if (P.k === 'in') { let t = 1e9, ax = 0; for (let i = 0; i < 3; i++) { if (Math.abs(d[i]) < 1e-12) continue; const ti = ((d[i] > 0 ? P.mx[i] : P.mn[i]) - o[i]) / d[i]; if (ti < t) { t = ti; ax = i; } } const n = [0, 0, 0]; n[ax] = d[ax] > 0 ? -1 : 1; return { t, n }; }
+  if (P.k === 'box') { let t0 = -1e9, t1 = 1e9, ax = 0; for (let i = 0; i < 3; i++) { if (Math.abs(d[i]) < 1e-12) { if (o[i] < P.mn[i] || o[i] > P.mx[i]) return null; continue; } let a = (P.mn[i] - o[i]) / d[i], b = (P.mx[i] - o[i]) / d[i]; if (a > b) [a, b] = [b, a]; if (a > t0) { t0 = a; ax = i; } t1 = Math.min(t1, b); } if (t1 < t0 || t0 < 0) return null; const n = [0, 0, 0]; n[ax] = d[ax] > 0 ? -1 : 1; return { t: t0, n }; }
+  if (P.k === 'cylx' || P.k === 'cylz') {
+    const [i, j] = P.k === 'cylx' ? [1, 2] : [0, 1]; const oy = o[i] - P.c[i], oz = o[j] - P.c[j];
+    const A = d[i] * d[i] + d[j] * d[j]; if (A < 1e-12) return null; const B = 2 * (d[i] * oy + d[j] * oz), C = oy * oy + oz * oz - P.r * P.r; const D = B * B - 4 * A * C; if (D < 0) return null;
+    const t = (-B + Math.sqrt(D)) / (2 * A); const q = v3.a(o, v3.k(d, t)); const n = [0, 0, 0]; n[i] = -(q[i] - P.c[i]) / P.r; n[j] = -(q[j] - P.c[j]) / P.r; return { t, n };
+  }
+  if (P.k === 'floor') { if (d[2] >= -1e-9) return null; return { t: (P.z - o[2]) / d[2], n: [0, 0, 1] }; }
+  return null;
+}
+function sdfPrim(p, P) {
+  if (P.k === 'in') { let best = 1e9, n = null; for (let i = 0; i < 3; i++) { const a = p[i] - P.mn[i], b = P.mx[i] - p[i]; if (Math.abs(a) < Math.abs(best)) { best = a; n = [0, 0, 0]; n[i] = 1; } if (Math.abs(b) < Math.abs(best)) { best = b; n = [0, 0, 0]; n[i] = -1; } } return { d: best, n }; }
+  if (P.k === 'box') {
+    const f = (q) => { const c = [(P.mn[0] + P.mx[0]) / 2, (P.mn[1] + P.mx[1]) / 2, (P.mn[2] + P.mx[2]) / 2], hs = [(P.mx[0] - P.mn[0]) / 2, (P.mx[1] - P.mn[1]) / 2, (P.mx[2] - P.mn[2]) / 2]; const e = [0, 1, 2].map(i => Math.abs(q[i] - c[i]) - hs[i]); const out = Math.hypot(Math.max(e[0], 0), Math.max(e[1], 0), Math.max(e[2], 0)); return out + Math.min(Math.max(e[0], e[1], e[2]), 0); };
+    const d = f(p), h0 = 1e-4; const n = v3.u([f([p[0] + h0, p[1], p[2]]) - f([p[0] - h0, p[1], p[2]]), f([p[0], p[1] + h0, p[2]]) - f([p[0], p[1] - h0, p[2]]), f([p[0], p[1], p[2] + h0]) - f([p[0], p[1], p[2] - h0])]); return { d, n };
+  }
+  if (P.k === 'cylx' || P.k === 'cylz') { const [i, j] = P.k === 'cylx' ? [1, 2] : [0, 1]; const a = p[i] - P.c[i], b = p[j] - P.c[j], r = Math.hypot(a, b) || 1e-9; const n = [0, 0, 0]; n[i] = -a / r; n[j] = -b / r; return { d: P.r - r, n }; }
+  if (P.k === 'floor') return { d: p[2] - P.z, n: [0, 0, 1] };
+}
+function sdfScene(p, prims) { let best = null; for (const P of prims) { const s = sdfPrim(p, P); if (!best || Math.abs(s.d) < Math.abs(best.d)) best = s; } return best; }
+function castScene(o, d, prims, maxR = 40) { let best = null; for (const P of prims) { const r = rayPrim(o, d, P); if (r && r.t > .05 && r.t < maxR && (!best || r.t < best.t)) best = r; } return best; }
+const SIGR = .02; // range noise σ (Mid-360 spec: ≤2 cm at 10 m)
+function lidarInfo(hits, pos, feats) {
+  const H = zeros(6, 6);
+  const addRow = (J, w) => { for (let a = 0; a < 6; a++) for (let b = 0; b < 6; b++) H[a][b] += J[a] * J[b] * w; };
+  for (const q of hits) { const s = v3.s(q.p, pos); const rx = v3.x(s, q.n); addRow([rx[0], rx[1], rx[2], q.n[0], q.n[1], q.n[2]], 1 / (SIGR * SIGR)); }
+  if (feats) for (const f of feats) { const s = v3.s(f.p, pos); for (let k = 0; k < 3; k++) { const e = [0, 0, 0]; e[k] = 1; const rr = v3.x(s, e); addRow([rr[0], rr[1], rr[2], e[0], e[1], e[2]], 1 / (.05 * .05)); } }
+  return H;
+}
+const DOFN = ['move along x', 'move along y', 'move along z', 'rotate about x (roll)', 'rotate about y (pitch)', 'rotate about z (yaw)'];
+function labLidar() {
+  return lessonCard({
+    id: 'lidar', num: 'L3', title: 'LiDAR: point-to-plane matching and geometric degeneracy',
+    q: 'LIO systems are the most accurate on drones — until the geometry runs out. Why does a long corridor, tunnel, shaft or open field break them, and how do fusion methods fix it?',
+    cap: 'Mid-360-like scan (360° × −7…52°, non-repetitive) · analytic map · 6×6 information matrix · point-to-plane ICP',
+    state: { env: 'room', feat: false, icp: null },
+    steps: [
+      { t: 'One integrated scan', p: 'A solid-state LiDAR such as the Livox Mid-360 fires 200,000 points per second in a <b>non-repetitive</b> pattern that fills in the longer you integrate (one drawn point here stands for many). Colour = height. Each point is a range along a known direction, so unlike a camera it gives <b>metric depth directly</b>, in the dark.' },
+      { t: 'Every point is a plane constraint', p: 'LIO systems (FAST-LIO2, LIO-SAM, DLIO…) match each new point to the <b>local surface</b> in the map. The residual is the distance from the point to that plane, measured along the surface <b>normal</b> (short lines). A point on a wall says "you cannot move toward this wall" — and says <em>nothing</em> about sliding along it.' },
+      { t: 'Add up the information', p: 'Stacking every point\'s constraint gives the 6×6 <b>information matrix</b> H = Σ JᵀJ/σ². Its eigenvectors are the directions the scan pins down; small eigenvalues are directions it cannot see. The ellipsoid shows relative translation uncertainty (axis ∝ 1/√λ, normalised so the best direction is 40 cm). <b>Switch the environment</b>: corridor → a needle along x; tunnel → also roll; shaft → along z; open field → x, y and yaw are all lost.' },
+      { t: 'Registration in action', p: 'Press <b>Run ICP</b>. The scan starts from a wrong pose (orange) and Gauss–Newton point-to-plane iterations pull it onto the map. In the room it locks on. In the corridor it converges to a perfect-looking fit that is <b>still off along x</b> — the residuals are zero for every x, so the solver has no reason to move. This is exactly how LIO drifts silently in tunnels.' },
+      { t: 'Fixing the weak direction', p: 'Turn on <b>features along the weak direction</b>: visual or LiDAR-intensity landmarks (door frames, signs, floor markings) give constraints the geometry lacks. That is the idea behind FAST-LIVO2 / R3LIVE (camera photometric residuals), COIN-LIO (intensity image), and degeneracy-aware solvers (Zhang, Kaess & Singh, ICRA 2016) that freeze unobservable directions instead of letting noise move them. Run ICP again in the corridor.' },
+    ],
+    onStep: (S, i) => { if (i === 3 || i === 4) S.resetIcp(); },
+    build: (stage, S) => {
+      const st = view3d(stage, { aspect: .62, yaw: -2.3, pitch: .62, dist: 15, target: [0, 0, 1], minDist: 3, maxDist: 120 });
+      let hits = [], seq = 0, H = null, feats = [];
+      const reset = () => { hits = []; seq = 0; H = null; const E = LENV[S.env]; st.goTo({ ...E.view, pitch: S.env === 'shaft' ? .25 : .62 }); S.resetIcp(); };
+      S.add(ctlSeg('environment', Object.entries(LENV).map(([k, e]) => [k, e.name]), 'room', (k) => { S.env = k; reset(); }));
+      S.add(ctlToggle('add visual / intensity features along the weak direction', false, (v) => { S.feat = v; S.resetIcp(); }), [2, 3, 4]);
+      S.add(ctlBtns(['Run ICP ▶', () => S.runIcp(), 'btn-primary'], ['Reset offset', () => S.resetIcp()]), [3, 4]);
+      S.resetIcp = () => { S.icp = { R: m3.exp([0, 0, rad(5)]), t: [.55, .35, .12], it: 0, run: false, acc: 0, hist: [] }; };
+      S.resetIcp();
+      S.runIcp = () => { S.resetIcp(); S.icp.run = true; };
+      const icpStep = (E) => {
+        const I = S.icp, pos = E.pos, sub = hits.filter((_, i) => i % 3 === 0); const Hm = zeros(6, 6), b = new Array(6).fill(0); let ss = 0;
+        for (const q of sub) { const s = v3.s(q.p, pos), qq = m3.v(I.R, s), p = v3.a(v3.a(qq, pos), I.t); const r = sdfScene(p, E.prims); const rx = v3.x(qq, r.n); const J = [rx[0], rx[1], rx[2], r.n[0], r.n[1], r.n[2]]; for (let a = 0; a < 6; a++) { b[a] -= J[a] * r.d; for (let c = 0; c < 6; c++) Hm[a][c] += J[a] * J[c]; } ss += r.d * r.d; }
+        if (S.feat) for (const f of feats) { const s = v3.s(f.p, pos), qq = m3.v(I.R, s); const p = v3.a(v3.a(qq, pos), I.t); const w = (SIGR / .05) ** 2; for (let k = 0; k < 3; k++) { const e = [0, 0, 0]; e[k] = 1; const rr = v3.x(qq, e); const J = [rr[0], rr[1], rr[2], e[0], e[1], e[2]]; const res = p[k] - f.p[k]; for (let a = 0; a < 6; a++) { b[a] -= J[a] * res * w; for (let c = 0; c < 6; c++) Hm[a][c] += J[a] * J[c] * w; } } }
+        let tr = 0; for (let a = 0; a < 6; a++) tr += Hm[a][a]; for (let a = 0; a < 6; a++) Hm[a][a] += 1e-6 * tr / 6 + 1e-9;
+        const dx = solveLin(Hm, b); if (!dx) return 0;
+        I.R = m3.mul(m3.exp(dx.slice(0, 3)), I.R); I.t = v3.a(I.t, dx.slice(3)); // rotation about the sensor origin, then shift
+        I.rms = Math.sqrt(ss / sub.length); I.it++; return Math.hypot(...dx);
+      };
+      animate(st, (st, dt) => {
+        const E = LENV[S.env], pos = E.pos, step = S.step;
+        // accumulate scan
+        const target = 2400, per = Math.min(90, target - hits.length);
+        for (let i = 0; i < per; i++, seq++) {
+          const u1 = (seq * .7548776662 + .5) % 1, u2 = (seq * .5698402910 + .5) % 1; const az = u1 * TAU, el = rad(lerp(E.el[0], E.el[1], u2));
+          const d = [Math.cos(el) * Math.cos(az), Math.cos(el) * Math.sin(az), Math.sin(el)]; const r = castScene(pos, d, E.prims); if (r) hits.push({ p: v3.a(pos, v3.k(d, r.t)), n: r.n, r: r.t });
+        }
+        if (hits.length >= target && !H) {
+          // features: the hits spread along the scene's weakest direction
+          feats = []; const H0 = lidarInfo(hits, pos); const ev = eigSym(H0); const weak = ev[5].vec; const wt = v3.u(weak.slice(3)); const useDir = v3.n(weak.slice(3)) > .3 ? wt : [1, 0, 0];
+          const sorted = hits.filter((_, i) => i % 7 === 0).sort((a, b) => v3.d(v3.s(a.p, pos), useDir) - v3.d(v3.s(b.p, pos), useDir));
+          for (let k = 0; k < 14; k++) feats.push(sorted[Math.floor((k + .5) / 14 * sorted.length)]);
+          H = true;
+        }
+        st.begin(dt);
+        // scene wireframe
+        for (const P of E.prims) {
+          if (P.k === 'in') st.box(P.mn.map((v, i) => clamp(v, pos[i] - 14, pos[i] + 14)), P.mx.map((v, i) => clamp(v, pos[i] - 14, pos[i] + 14)), '#9aa0a6', { inside: true, alpha: .06, stroke: '#9aa0a6', salpha: 4 });
+          if (P.k === 'box') st.box(P.mn, P.mx, '#9aa0a6', { alpha: .18, stroke: '#7a7f86', salpha: 3 });
+          if (P.k === 'cylx') for (let x = -14; x <= 14; x += 2) st.ring([x, P.c[1], P.c[2]], m3.ry(Math.PI / 2), P.r, '#9aa0a6', 1, { n: 24, alpha: .35 });
+          if (P.k === 'cylz') for (let z = 2; z <= 22; z += 2) st.ring([P.c[0], P.c[1], z], m3.I(), P.r, '#9aa0a6', 1, { n: 24, alpha: .35 });
+          if (P.k === 'floor') st.grid(-14, 14, -14, 14, 2, P.z, '#e3e3e8');
+        }
+        const zr = S.env === 'shaft' ? [0, 24] : S.env === 'open' ? [0, .5] : [0, 3];
+        const icpOn = step >= 3;
+        // ICP animation
+        if (icpOn && S.icp.run && H) { S.icp.acc += dt; if (S.icp.acc > .45) { S.icp.acc = 0; const d = icpStep(E); if (d < 1e-6 || S.icp.it >= 14) S.icp.run = false; } }
+        const showN = step === 1;
+        hits.forEach((q, i) => {
+          const c = ramp((q.p[2] - zr[0]) / (zr[1] - zr[0]));
+          if (icpOn) st.dot(q.p, 1.4, '#a5a5ad', { alpha: .6 }); else st.dot(q.p, 1.8, c, { alpha: .9 });
+          if (showN && i % 9 === 0) st.line(q.p, v3.a(q.p, v3.k(q.n, .45)), c, 1.2, { alpha: .85 });
+        });
+        if (step === 0) for (let i = Math.max(0, hits.length - 40); i < hits.length; i++) st.line(pos, hits[i].p, COL.lid, .6, { alpha: .25 });
+        if (icpOn) { const I = S.icp; hits.forEach((q, i) => { if (i % 2) return; const s = v3.s(q.p, pos); st.dot(v3.a(v3.a(m3.v(I.R, s), pos), I.t), 1.6, COL.lrn, { alpha: .85 }); }); st.drone(v3.a(pos, I.t), I.R, COL.lrn, 1.4, { alpha: .9 }); }
+        if ((step >= 2) && S.feat) for (const f of feats) { st.dot(f.p, 5, COL.vis, { sq: true }); }
+        st.drone(pos, m3.I(), COL.ink, 1.6);
+        // information
+        let rows = [['points in scan', String(hits.length)], ['range noise σ', '2 cm (Mid-360 spec)']];
+        if (H && step >= 2) {
+          const Hm = lidarInfo(hits, pos, S.feat ? feats : null); const ev = eigSym(Hm);
+          // translational marginal covariance
+          const Hr = Hm.map((r, i) => r.map((v, j) => v + (i === j ? 1e-6 : 0))); const Hi = invMat(Hr);
+          if (Hi && step === 2 || (Hi && step === 4)) {
+            const Ct = [[Hi[3][3], Hi[3][4], Hi[3][5]], [Hi[4][3], Hi[4][4], Hi[4][5]], [Hi[5][3], Hi[5][4], Hi[5][5]]];
+            const e3 = eigSym(Ct); const smin = Math.sqrt(Math.max(1e-30, e3[2].val)); const k = .4 / smin;
+            const Cs = Ct.map(r => r.map(v => v * k * k)); st.ellipsoid(pos, Cs, COL.lid, { k: 1, cap: 9, fill: .16, lw: 1.4 });
+            e3.forEach((e, i) => { const L = Math.min(9, Math.sqrt(Math.max(0, e.val)) * k); if (L > 1.2) st.text(v3.a(pos, v3.k(e.vec, L)), 'weak', COL.lid, { size: 9.5, weight: 700, bg: 'rgba(255,255,255,.85)' }); });
+          }
+          const lmax = ev[0].val;
+          const bars = ev.map(e => { const tn = v3.n(e.vec.slice(3)), rn = v3.n(e.vec.slice(0, 3)); const comp = tn >= rn ? e.vec.slice(3) : e.vec.slice(0, 3); let ax = 0; for (let i = 1; i < 3; i++) if (Math.abs(comp[i]) > Math.abs(comp[ax])) ax = i; const name = DOFN[(tn >= rn ? 0 : 3) + ax]; const rel = Math.max(1e-9, e.val / lmax); const w = clamp((Math.log10(rel) + 8) / 8, 0, 1); return `<div class="eig"><span>${name}</span><i style="width:${(w * 100).toFixed(1)}%;background:${rel < 1e-4 ? COL.lid : rel < 1e-2 ? COL.warn : COL.ok}"></i><b>${rel < 1e-6 ? '≈ 0' : rel.toExponential(1)}</b></div>`; });
+          rows = [...rows, `<div class="r sub"><span>information per direction (λ / λ<sub>max</sub>, log scale; rotations in rad, translations in m)</span></div>`, ...bars];
+        }
+        if (icpOn) { const I = S.icp; const yawE = deg(yawOf(I.R)); rows.push(['ICP iteration', String(I.it)], ['RMS point-to-plane residual', I.rms != null ? fmtm(I.rms) : '—'], ['remaining error x / y / z', I.t.map(v => (Math.abs(v) < 5e-4 ? 0 : v * 100).toFixed(1) + ' cm').join(' · '), Math.abs(I.t[0]) > .05 || Math.abs(I.t[1]) > .05 || Math.abs(I.t[2]) > .05 ? COL.lid : COL.ok], ['remaining yaw error', (Math.abs(yawE) < .005 ? 0 : yawE).toFixed(2) + '°']); }
+        S.ro(rows);
+        st.flush();
+      });
+    }
+  });
+}
+
+/* =====================================================================
+   L4 · FACTOR GRAPH: odometry, drift, loop closure, robust PGO (4-DoF)
+   ===================================================================== */
+const GRAPH = (() => {
+  const W = [[1, 1, 1.2], [15, 1, 1.2], [15, 9, 1.2], [1, 9, 1.2], [1, 2.4, 1.2], [2.2, 2.2, 1.3], [6, 2.2, 4.0], [15, 2.2, 4.2], [15, 9, 4.2], [1, 9, 4.2], [1, 3.2, 4.2], [2.6, 3.2, 4.0], [6.5, 3.2, 1.4], [4, 1.3, 1.2], [1.6, 1.1, 1.2]];
+  const pts = []; for (let i = 0; i < W.length - 1; i++) { const a = W[i], b = W[i + 1], L = v3.n(v3.s(b, a)); const n = Math.max(1, Math.round(L / .25)); for (let k = 0; k < n; k++) pts.push(v3.l(a, b, k / n)); } pts.push(W[W.length - 1]);
+  const kf = [pts[0]]; let acc = 0; for (let i = 1; i < pts.length; i++) { acc += v3.n(v3.s(pts[i], pts[i - 1])); if (acc >= 1.6) { kf.push(pts[i]); acc = 0; } } if (v3.n(v3.s(kf[kf.length - 1], pts[pts.length - 1])) > .5) kf.push(pts[pts.length - 1]);
+  const N = kf.length; const yaw = kf.map((p, i) => { const q = kf[Math.min(N - 1, i + 1)], r = kf[Math.max(0, i - 1)]; return Math.atan2(q[1] - r[1], q[0] - r[0]); });
+  const truth = kf.map((p, i) => [p[0], p[1], p[2], yaw[i]]);
+  const r = rng(12); const Rt = (a) => [[Math.cos(a), Math.sin(a), 0], [-Math.sin(a), Math.cos(a), 0], [0, 0, 1]];
+  const rel = (i, j, X) => { const d = v3.s(X[j].slice(0, 3), X[i].slice(0, 3)); return [...m3.v(Rt(X[i][3]), d), X[j][3] - X[i][3]]; };
+  const odo = []; for (let i = 0; i < N - 1; i++) { const z = rel(i, i + 1, truth); z[0] += gauss(r) * .02; z[1] += gauss(r) * .02 + .012; z[2] = z[2] * 1.035 + gauss(r) * .01; z[3] += rad(.55) + gauss(r) * rad(.2); odo.push({ i, j: i + 1, z, kind: 'odo' }); }
+  // dead reckoning
+  const dr = [truth[0].slice()]; for (const e of odo) { const a = dr[e.i]; const c = Math.cos(a[3]), s = Math.sin(a[3]); dr.push([a[0] + c * e.z[0] - s * e.z[1], a[1] + s * e.z[0] + c * e.z[1], a[2] + e.z[2], a[3] + e.z[3]]); }
+  // loop candidates: same place, different time (true) and a false match (floor 2 above floor 1)
+  const near = (a, b) => v3.n(v3.s(kf[a], kf[b]));
+  const loops = []; const used = new Set();
+  for (let j = 0; j < N; j++) for (let i = 0; i < j - 8; i++) if (near(i, j) < 1.3 && !used.has(j) && !used.has(i)) { const z = rel(i, j, truth); z[0] += gauss(r) * .03; z[1] += gauss(r) * .03; z[2] += gauss(r) * .02; z[3] += gauss(r) * rad(.5); loops.push({ i, j, z, kind: 'loop' }); used.add(j); used.add(i); }
+  let fi = 0, fj = 0, bd = 1e9; for (let i = 0; i < N; i++) for (let j = i + 8; j < N; j++) { const a = kf[i], b = kf[j]; if (a[2] < 2 && b[2] > 3.5) { const d = Math.hypot(a[0] - b[0], a[1] - b[1]); if (d < bd && Math.abs(a[0] - 15) < 1 && Math.abs(a[1] - 9) < 3) { bd = d; fi = i; fj = j; } } }
+  const fz = rel(fi, fj, truth); const falseLoop = { i: fi, j: fj, z: [fz[0], fz[1], 0, fz[3]], kind: 'false' };
+  return { N, truth, odo, dr, loops, falseLoop, rel };
+})();
+function pgoSolve(X0, edges, op = {}) {
+  const N = X0.length, n = 4 * (N - 1); let X = X0.map(x => x.slice()); const states = [X.map(x => x.slice())]; const weights = [];
+  const sp = .05, sy = rad(.6), sl = .06, sly = rad(1.2); const info = (k) => k === 'odo' ? [1 / sp ** 2, 1 / sp ** 2, 1 / sp ** 2, 1 / sy ** 2] : [1 / sl ** 2, 1 / sl ** 2, 1 / sl ** 2, 1 / sly ** 2];
+  const residual = (e, X) => { const a = X[e.i], b = X[e.j]; const c = Math.cos(a[3]), s = Math.sin(a[3]); const d = [b[0] - a[0], b[1] - a[1], b[2] - a[2]]; const rp = [c * d[0] + s * d[1] - e.z[0], -s * d[0] + c * d[1] - e.z[1], d[2] - e.z[2]]; let ry = b[3] - a[3] - e.z[3]; ry = Math.atan2(Math.sin(ry), Math.cos(ry)); return { r: [...rp, ry], d, c, s }; };
+  let mu = op.robust ? 2e4 : 0; const c2 = 9;
+  const iters = op.iters || (op.robust ? 16 : 6);
+  let lastH = null;
+  for (let it = 0; it < iters; it++) {
+    const H = zeros(n, n), b = new Array(n).fill(0); const wts = {};
+    for (const e of edges) {
+      const { r, d, c, s } = residual(e, X); const Wd = info(e.kind);
+      let w = 1; if (op.robust && e.kind !== 'odo') { let chi = 0; for (let k = 0; k < 4; k++) chi += r[k] * r[k] * Wd[k]; w = (mu * c2 / (chi + mu * c2)) ** 2; wts[e.i + '-' + e.j] = w; }
+      // Jacobians wrt [p_i, yaw_i] and [p_j, yaw_j]
+      const Ji = [[-c, -s, 0, -s * d[0] + c * d[1]], [s, -c, 0, -c * d[0] - s * d[1]], [0, 0, -1, 0], [0, 0, 0, -1]];
+      const Jj = [[c, s, 0, 0], [-s, c, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]];
+      const blocks = [[e.i, Ji], [e.j, Jj]];
+      for (const [vi, A] of blocks) { if (vi === 0) continue; const oi = 4 * (vi - 1); for (let a = 0; a < 4; a++) { let g = 0; for (let k = 0; k < 4; k++) g += A[k][a] * Wd[k] * r[k] * w; b[oi + a] -= g; } for (const [vj, B] of blocks) { if (vj === 0) continue; const oj = 4 * (vj - 1); for (let a = 0; a < 4; a++) for (let bb = 0; bb < 4; bb++) { let v = 0; for (let k = 0; k < 4; k++) v += A[k][a] * Wd[k] * B[k][bb] * w; H[oi + a][oj + bb] += v; } } }
+    }
+    for (let a = 0; a < n; a++) H[a][a] += 1e-6;
+    lastH = H;
+    const dx = solveLin(H, b); if (!dx) break;
+    X = X.map((x, k) => k === 0 ? x : [x[0] + dx[4 * (k - 1)], x[1] + dx[4 * (k - 1) + 1], x[2] + dx[4 * (k - 1) + 2], x[3] + dx[4 * (k - 1) + 3]]);
+    states.push(X.map(x => x.slice())); weights.push(wts);
+    if (op.robust) mu = Math.max(1, mu / 3.2);
+  }
+  return { states, weights, H: lastH };
+}
+function posCov(H, N) { const Hi = invMat(H); if (!Hi) return null; const out = [[[0, 0, 0], [0, 0, 0], [0, 0, 0]]]; for (let k = 1; k < N; k++) { const o = 4 * (k - 1); out.push([[Hi[o][o], Hi[o][o + 1], Hi[o][o + 2]], [Hi[o + 1][o], Hi[o + 1][o + 1], Hi[o + 1][o + 2]], [Hi[o + 2][o], Hi[o + 2][o + 1], Hi[o + 2][o + 2]]]); } return out; }
+function labGraph() {
+  return lessonCard({
+    id: 'graph', num: 'L4', title: 'Factor graphs, drift and loop closure',
+    q: 'A drone flies two floors of a building and comes back. How does a SLAM back-end turn "I have seen this place before" into a corrected map — and what happens if that recognition is wrong?',
+    cap: '4-DoF pose graph (x, y, z, yaw) · Gauss–Newton · GNC Geman–McClure robust kernel · drift exaggerated ≈5× for visibility',
+    state: { anim: null, X: null, falseOn: false, robust: false, cov: null },
+    steps: [
+      { t: 'Keyframes and odometry factors', p: 'Every ~1.6 m the system stores a <b>keyframe</b> (ring) — a pose variable. VIO/LIO odometry between consecutive keyframes becomes a <b>factor</b> (black square): a soft constraint "j is about here relative to i", with an uncertainty. The graph grows as the drone flies: floor 1, the stairs, floor 2, back down. Grey dashes = ground truth.' },
+      { t: 'Small errors compound', p: 'Each factor is slightly wrong: a 0.55° yaw bias and a 3.5% height scale error per step here. Composed together, the estimate (blue) peels away from the truth. The ellipsoids (2σ, from inverting the graph\'s information matrix) grow with distance from the start, fastest sideways because of yaw. Hover any keyframe for its error.' },
+      { t: 'Recognising a place', p: 'When the drone returns to somewhere it has been, place recognition (DBoW2 bag-of-words for images, Scan Context for LiDAR, NetVLAD learned descriptors) proposes a <b>loop</b>; a geometric check (PnP/ICP) measures the relative pose. Dashed green lines are those loop factors. They connect keyframes far apart in time but close in space.' },
+      { t: 'Optimise the graph', p: 'Press <b>Optimise</b>. Gauss–Newton solves for all poses at once so that every factor is satisfied as well as possible. The error is spread back along the whole trajectory and the ellipsoids shrink — the map becomes globally consistent. VINS-Fusion runs this as a 4-DoF graph (x, y, z, yaw) for the reason in L1: roll and pitch are already fixed by gravity.' },
+      { t: 'When recognition is wrong', p: 'Identical floors, repeated racks and tunnel segments cause <b>perceptual aliasing</b>. Turn on the <b>false loop</b> (red) between floor 1 and the identical spot on floor 2, then optimise: plain least squares drags the floors together. Turn on the <b>robust kernel</b>: graduated non-convexity (GNC) down-weights the factor that disagrees with everything else. Kimera-RPGO uses GNC; DOOR-SLAM, Kimera-Multi and Swarm-SLAM use pairwise consistency (PCM) for the same job.' },
+    ],
+    onStep: (S, i) => { if (i < 3) { S.anim = null; S.X = GRAPH.dr.map(x => x.slice()); } S.covDirty = true; },
+    build: (stage, S) => {
+      const st = view3d(stage, { aspect: .62, yaw: -2.2, pitch: .62, dist: 25, target: [8, 5, 2.4], minDist: 4, maxDist: 90 });
+      S.X = GRAPH.dr.map(x => x.slice());
+      S.add(ctlBtns(['Optimise ▶', () => S.opt(), 'btn-primary'], ['Reset to odometry', () => { S.anim = null; S.X = GRAPH.dr.map(x => x.slice()); S.covDirty = true; }]), [3, 4]);
+      S.add(ctlToggle('inject a false loop (floor 1 ↔ floor 2)', false, (v) => { S.falseOn = v; S.anim = null; S.X = GRAPH.dr.map(x => x.slice()); S.covDirty = true; }), [4]);
+      S.add(ctlToggle('robust kernel (GNC)', false, (v) => { S.robust = v; }), [4]);
+      const edges = () => [...GRAPH.odo, ...(S.step >= 2 ? GRAPH.loops : []), ...(S.step === 4 && S.falseOn ? [GRAPH.falseLoop] : [])];
+      S.opt = () => { const res = pgoSolve(GRAPH.dr, edges(), { robust: S.robust && S.step === 4 }); S.anim = { states: res.states, weights: res.weights, i: 0, u: 0 }; S.X = res.states[0].map(x => x.slice()); S.covDirty = true; S.finalH = res.H; };
+      const covFor = (X) => { // information at X for current edges (no robust weights except final)
+        const res = pgoSolve(X, edges(), { iters: 1 }); return posCov(res.H, GRAPH.N);
+      };
+      animate(st, (st, dt) => {
+        const step = S.step; S.stepT += dt; st.begin(dt);
+        st.grid(0, 16, 0, 10, 1, 0, '#ececf0');
+        st.face([[0, 0, 2.8], [16, 0, 2.8], [16, 10, 2.8], [0, 10, 2.8]], '#9aa0a6', { alpha: .05, stroke: '#c8c8ce', salpha: 4 }); st.text([16, 0, 2.8], 'floor 2', COL.mute, { dx: 6, size: 9.5 }); st.text([16, 0, 0], 'floor 1', COL.mute, { dx: 6, size: 9.5 });
+        // animation of optimisation
+        if (S.anim) { const A = S.anim; if (A.i < A.states.length - 1) { A.u += dt / (S.robust ? .3 : .55); const a = A.states[A.i], b = A.states[A.i + 1], u = Math.min(1, A.u); S.X = a.map((x, k) => x.map((v, j) => lerp(v, b[k][j], u))); if (A.u >= 1) { A.i++; A.u = 0; S.covDirty = true; } } }
+        const X = S.X, N = GRAPH.N, T = GRAPH.truth;
+        const reveal = step === 0 ? Math.min(N, Math.floor(S.stepT * 7) + 2) : N;
+        st.path(T.map(t => t.slice(0, 3)), '#9a9aa0', 1.2, { dash: [4, 4] });
+        // ellipsoids
+        if (step >= 1 && S.covDirty && (!S.anim || S.anim.i >= S.anim.states.length - 1)) { S.cov = covFor(X); S.covDirty = false; }
+        if (step >= 1 && S.cov) for (let k = 4; k < N; k += 5) st.ellipsoid(X[k].slice(0, 3), S.cov[k], COL.vis, { k: 2, fill: .07, ralpha: .35, cap: 6 });
+        for (let k = 1; k < reveal; k++) { st.line(X[k - 1].slice(0, 3), X[k].slice(0, 3), COL.vis, 2); const m = v3.l(X[k - 1].slice(0, 3), X[k].slice(0, 3), .5); st.dot(m, 2.4, COL.ink, { sq: true }); }
+        const err = (k) => v3.n(v3.s(X[k].slice(0, 3), T[k].slice(0, 3)));
+        for (let k = 0; k < reveal; k++) st.dot(X[k].slice(0, 3), k === 0 ? 5 : 3.4, k === 0 ? COL.ink : COL.vis, { ring: true, lw: 1.6, tip: () => `<b>keyframe ${k}</b>error vs truth: ${err(k).toFixed(2)} m<br>yaw error: ${deg(Math.atan2(Math.sin(X[k][3] - T[k][3]), Math.cos(X[k][3] - T[k][3]))).toFixed(1)}°` });
+        if (reveal < N) st.drone(X[reveal - 1].slice(0, 3), m3.rz(X[reveal - 1][3]), COL.ink, 1.3);
+        st.text(X[0].slice(0, 3), 'start (fixed)', COL.ink, { dx: -8, dy: 14, align: 'right', size: 9.5 });
+        if (step >= 2) {
+          const lastW = S.anim && S.anim.weights[Math.max(0, Math.min(S.anim.i, S.anim.weights.length - 1))];
+          for (const e of GRAPH.loops) { const w = lastW?.[e.i + '-' + e.j] ?? 1; st.line(X[e.i].slice(0, 3), X[e.j].slice(0, 3), COL.ok, 2.2, { dash: [5, 3], alpha: .3 + .7 * w }); }
+          if (step === 2) GRAPH.loops.forEach(e => st.text(v3.l(X[e.i].slice(0, 3), X[e.j].slice(0, 3), .5), 'loop: same place', COL.ok, { dx: 8, size: 9.5, bg: 'rgba(255,255,255,.85)' }));
+          if (step === 4 && S.falseOn) { const e = GRAPH.falseLoop; const w = lastW?.[e.i + '-' + e.j] ?? 1; st.line(X[e.i].slice(0, 3), X[e.j].slice(0, 3), COL.lid, 2.4, { dash: [5, 3], alpha: .25 + .75 * w }); st.text(v3.l(X[e.i].slice(0, 3), X[e.j].slice(0, 3), .5), `false loop · weight ${w.toFixed(2)}`, COL.lid, { dx: 8, size: 9.5, bg: 'rgba(255,255,255,.85)' }); }
+        }
+        let se = 0, mx = 0; for (let k = 0; k < N; k++) { const e = err(k); se += e * e; mx = Math.max(mx, e); }
+        const rows = [['keyframes (pose variables)', String(reveal)], ['odometry factors', String(Math.max(0, reveal - 1))]];
+        if (step >= 2) rows.push(['loop factors', String(GRAPH.loops.length + (step === 4 && S.falseOn ? 1 : 0))]);
+        rows.push(['RMS position error', (Math.sqrt(se / N)).toFixed(2) + ' m', Math.sqrt(se / N) > .5 ? COL.lid : COL.ok], ['worst keyframe error', mx.toFixed(2) + ' m'], ['yaw error at end', deg(Math.atan2(Math.sin(X[N - 1][3] - T[N - 1][3]), Math.cos(X[N - 1][3] - T[N - 1][3]))).toFixed(1) + '°']);
+        if (S.anim) rows.push(['GN iteration', `${S.anim.i} / ${S.anim.states.length - 1}`]);
+        if (step >= 1) rows.push(['unknowns solved jointly', `${4 * (N - 1)} (4 per keyframe)`]);
+        S.ro(rows);
+        st.flush();
+      });
+    }
+  });
+}
+
+/* =====================================================================
+   L5 · MAPS: what each family builds, and what a planner can use
+   ===================================================================== */
+const MAPSCENE = (() => {
+  const room = { mn: [-4, -3, 0], mx: [4, 3, 2.8] };
+  const objs = [{ mn: [.5, -1.3, 0], mx: [2.1, -.3, .75], col: '#b06000', name: 'table' }, { mn: [-3.9, .7, 0], mx: [-3.4, 2.8, 2], col: '#1a73e8', name: 'shelf' }, { mn: [-1.6, 1.8, 0], mx: [.8, 2.9, .8], col: '#9334e6', name: 'sofa' }, { mn: [2.6, 1.1, 0], mx: [3.1, 1.6, 2.8], col: '#5f6368', name: 'pillar' }];
+  const posters = [{ wall: 'y+', x0: -2.5, x1: -1, z0: 1.1, z1: 2.1, col: '#d93025' }, { wall: 'y+', x0: 1.4, x1: 2.4, z0: 1.2, z1: 2.2, col: '#188038' }, { wall: 'x+', x0: -2, x1: -.5, z0: 1, z1: 2, col: '#e37400' }, { wall: 'y-', x0: -1, x1: .8, z0: 1.3, z1: 2.1, col: '#00838f' }];
+  const tex = (p, n) => {
+    for (const o of objs) if (p[0] >= o.mn[0] - .01 && p[0] <= o.mx[0] + .01 && p[1] >= o.mn[1] - .01 && p[1] <= o.mx[1] + .01 && p[2] <= o.mx[2] + .01) return o.col;
+    if (n[2] === 1) return ((Math.floor(p[0] / .8) + Math.floor(p[1] / .8)) & 1) ? '#d9d4cc' : '#c4beb4';
+    for (const q of posters) { const on = (q.wall === 'y+' && p[1] > 2.98 || q.wall === 'y-' && p[1] < -2.98) ? p[0] : (q.wall === 'x+' && p[0] > 3.98 ? p[1] : null); if (on != null && on >= q.x0 && on <= q.x1 && p[2] >= q.z0 && p[2] <= q.z1) return q.col; }
+    return p[2] < .12 ? '#8e8e93' : '#e2e2e6';
+  };
+  const r = rng(33); const pts = [];
+  const sampleRect = (o, u, v, n, dens) => { const A = v3.n(u) * v3.n(v), m = Math.round(A * dens); for (let i = 0; i < m; i++) { const p = v3.a(o, v3.a(v3.k(u, r()), v3.k(v, r()))); pts.push({ p, n, c: tex(p, n) }); } };
+  const R = room;
+  sampleRect([R.mn[0], R.mn[1], 0], [8, 0, 0], [0, 6, 0], [0, 0, 1], 26);
+  sampleRect([R.mn[0], R.mx[1], 0], [8, 0, 0], [0, 0, 2.8], [0, -1, 0], 26); sampleRect([R.mn[0], R.mn[1], 0], [8, 0, 0], [0, 0, 2.8], [0, 1, 0], 26);
+  sampleRect([R.mx[0], R.mn[1], 0], [0, 6, 0], [0, 0, 2.8], [-1, 0, 0], 26); sampleRect([R.mn[0], R.mn[1], 0], [0, 6, 0], [0, 0, 2.8], [1, 0, 0], 26);
+  for (const o of objs) { const [x0, y0, z0] = o.mn, [x1, y1, z1] = o.mx; sampleRect([x0, y0, z1], [x1 - x0, 0, 0], [0, y1 - y0, 0], [0, 0, 1], 60); sampleRect([x0, y0, z0], [x1 - x0, 0, 0], [0, 0, z1 - z0], [0, -1, 0], 60); sampleRect([x0, y1, z0], [x1 - x0, 0, 0], [0, 0, z1 - z0], [0, 1, 0], 60); sampleRect([x0, y0, z0], [0, y1 - y0, 0], [0, 0, z1 - z0], [-1, 0, 0], 60); sampleRect([x1, y0, z0], [0, y1 - y0, 0], [0, 0, z1 - z0], [1, 0, 0], 60); }
+  // sparse landmarks: object corners, poster corners, a few textured points
+  const sparse = [];
+  for (const o of objs) for (const x of [o.mn[0], o.mx[0]]) for (const y of [o.mn[1], o.mx[1]]) sparse.push([x, y, o.mx[2]], [x, y, Math.min(.3, o.mx[2])]);
+  for (const q of posters) for (const a of [q.x0, q.x1]) for (const z of [q.z0, q.z1]) sparse.push(q.wall === 'y+' ? [a, 3, z] : q.wall === 'y-' ? [a, -3, z] : [4, a, z]);
+  pts.forEach((q, i) => { if (q.c !== '#e2e2e6' && q.c !== '#d9d4cc' && q.c !== '#c4beb4' && i % 23 === 0) sparse.push(q.p); });
+  // voxels 0.25 m
+  const VS = .25, vox = new Map();
+  const voxRect = (o, u, v, n, inward) => { const nu = Math.ceil(v3.n(u) / .1), nv = Math.ceil(v3.n(v) / .1); for (let a = 0; a <= nu; a++) for (let b = 0; b <= nv; b++) { const p = v3.a(v3.a(o, v3.a(v3.k(u, Math.min(a / nu, .999)), v3.k(v, Math.min(b / nv, .999)))), v3.k(n, inward ? .01 : -.01)); const k = p.map(x => Math.floor(x / VS)); const key = k.join(','); if (!vox.has(key)) vox.set(key, { k }); } };
+  voxRect([R.mn[0], R.mn[1], 0], [8, 0, 0], [0, 6, 0], [0, 0, 1], true);
+  voxRect([R.mn[0], R.mx[1], 0], [8, 0, 0], [0, 0, 2.75], [0, -1, 0], true); voxRect([R.mn[0], R.mn[1], 0], [8, 0, 0], [0, 0, 2.75], [0, 1, 0], true);
+  voxRect([R.mx[0], R.mn[1], 0], [0, 6, 0], [0, 0, 2.75], [-1, 0, 0], true); voxRect([R.mn[0], R.mn[1], 0], [0, 6, 0], [0, 0, 2.75], [1, 0, 0], true);
+  for (const o of objs) { const [x0, y0, z0] = o.mn, [x1, y1, z1] = o.mx; voxRect([x0, y0, z1], [x1 - x0, 0, 0], [0, y1 - y0, 0], [0, 0, 1]); voxRect([x0, y0, z0], [x1 - x0, 0, 0], [0, 0, z1 - z0], [0, -1, 0]); voxRect([x0, y1, z0], [x1 - x0, 0, 0], [0, 0, z1 - z0], [0, 1, 0]); voxRect([x0, y0, z0], [0, y1 - y0, 0], [0, 0, z1 - z0], [-1, 0, 0]); voxRect([x1, y0, z0], [0, y1 - y0, 0], [0, 0, z1 - z0], [1, 0, 0]); }
+  const gs = pts.filter((_, i) => i % 3 === 0).map(q => { const t1 = v3.u(Math.abs(q.n[2]) > .9 ? [1, 0, 0] : v3.x(q.n, [0, 0, 1])); const t2 = v3.x(q.n, t1); const a = .1 + r() * .1, b = .08 + r() * .08; return { p: q.p, u: v3.k(t1, a), v: v3.k(t2, b), c: q.c }; });
+  const kfs = [[-2.8, -2, 1.3, .6], [-1, -2.3, 1.4, 1.2], [1, -2.2, 1.3, 1.9], [3, -1.5, 1.4, 2.4]];
+  const plan = [[-3.2, -2.3, 1], [-1.2, -1.8, 1.1], [.2, -.1, 1.3], [1.4, .7, 1.4], [2.1, 2.3, 1.3], [3.4, 2.5, 1.2]];
+  return { room, objs, pts, sparse, vox, VS, gs, kfs, plan, tex };
+})();
+function labMaps() {
+  const M = MAPSCENE;
+  const MODES = [
+    ['sparse', 'Sparse landmarks', 'What VIO keeps (VINS, OpenVINS, ORB-SLAM3): a few hundred <b>3D points at corners and texture</b>, plus keyframe poses (frustums). Ideal for localisation and loop closure, tiny in memory — but it says <em>nothing</em> about free space: a planner cannot tell a blank wall from an open doorway.'],
+    ['cloud', 'LiDAR point cloud', 'What LIO keeps (FAST-LIO2 ikd-Tree, Faster-LIO iVox): dense metric geometry, colour = height. Excellent for scan-to-map registration and offline inspection; to fly through it, a planner first converts it to occupancy.'],
+    ['rgb', 'Coloured point cloud', 'LiDAR geometry with camera colour attached (FAST-LIVO2, R3LIVE): the same points painted from images. Lets photometric residuals constrain degenerate geometry (L3) and gives a human-readable map for inspection or search-and-rescue reports.'],
+    ['voxel', 'Occupancy voxels', 'What planners use (OctoMap, voxblox, EGO-Planner\'s grid): space split into cubes, each occupied / free / unknown (0.25 m here). The green path is a collision-free route through free voxels. Resolution trades memory for how tight a gap the drone can trust.'],
+    ['mesh', 'Mesh', 'Surfaces as triangles (Kimera\'s mesh, TSDF/ESDF pipelines such as voxblox). Compact, renders fast, gives distances to the nearest surface — the ESDF that many drone trajectory optimisers query hundreds of times per plan.'],
+    ['gauss', '3D Gaussians', 'Each surface patch is an oriented, semi-transparent ellipse with colour (MonoGS, Gaussian-splatting SLAM). Photorealistic novel views and dense, differentiable maps — but GPU-heavy and still research-grade for onboard drone use.'],
+  ];
+  return lessonCard({
+    id: 'maps', num: 'L5', title: 'What the map looks like — and who can use it',
+    q: 'Each family builds a different kind of map. Same room, six representations: which one can a planner fly through, and which one can a person read?',
+    cap: '8 × 6 × 2.8 m room · sampled surfaces · memory figures are computed for this scene',
+    steps: MODES.map(([k, t, p]) => ({ t, p })),
+    build: (stage, S) => {
+      const st = view3d(stage, { aspect: .62, yaw: -2.25, pitch: .72, dist: 13, target: [0, 0, .9], minDist: 3, maxDist: 40 });
+      const dirs = [[1, 0, 0], [-1, 0, 0], [0, 1, 0], [0, -1, 0], [0, 0, 1], [0, 0, -1]];
+      animate(st, (st, dt) => {
+        const mode = MODES[S.step][0]; st.begin(dt);
+        st.box(M.room.mn, M.room.mx, null, { inside: true, stroke: '#c8c8ce', salpha: .9, skipTop: true });
+        let rows = [];
+        if (mode === 'sparse') {
+          for (const p of M.sparse) { st.line(v3.a(p, [-.07, 0, 0]), v3.a(p, [.07, 0, 0]), COL.vis, 1.6); st.line(v3.a(p, [0, 0, -.07]), v3.a(p, [0, 0, .07]), COL.vis, 1.6); }
+          M.kfs.forEach((k, i) => { const R = m3.mul(m3.rz(k[3] - Math.PI / 2 + .3), RFWD); const C = k.slice(0, 3); st.frustum(C, R, { depth: .5, col: COL.ink, lw: 1 }); if (i) st.line(M.kfs[i - 1].slice(0, 3), C, COL.ink, 1.4, { dash: [3, 3] }); });
+          rows = [['landmarks', String(M.sparse.length)], ['memory (xyz float32)', (M.sparse.length * 12 / 1024).toFixed(1) + ' KB'], ['free space known?', 'no', COL.lid], ['localise / loop-close', 'yes', COL.ok]];
+        }
+        if (mode === 'cloud' || mode === 'rgb') {
+          for (const q of M.pts) st.dot(q.p, 1.5, mode === 'rgb' ? q.c : ramp(q.p[2] / 2.8), { alpha: .9 });
+          rows = [['points', M.pts.length.toLocaleString()], ['memory (xyz + intensity float32)', (M.pts.length * 16 / 1024).toFixed(0) + ' KB'], ['free space known?', 'only after ray-casting into occupancy', COL.warn], ['human-readable', mode === 'rgb' ? 'yes' : 'partly', mode === 'rgb' ? COL.ok : COL.warn]];
+        }
+        if (mode === 'voxel') {
+          const VS = M.VS, eye = st.E.eye;
+          for (const [key, v] of M.vox) {
+            const [i, j, k] = v.k; const mn = [i * VS, j * VS, k * VS], mx = [mn[0] + VS, mn[1] + VS, mn[2] + VS]; const c = ramp((k * VS) / 2.8);
+            dirs.forEach((d, fi) => {
+              const nb = [i + d[0], j + d[1], k + d[2]].join(','); if (M.vox.has(nb)) return;
+              const ctr = [mn[0] + VS / 2 + d[0] * VS / 2, mn[1] + VS / 2 + d[1] * VS / 2, mn[2] + VS / 2 + d[2] * VS / 2]; if (v3.d(d, v3.s(eye, ctr)) <= 0) return;
+              const ax = d[0] ? [1, 2] : d[1] ? [0, 2] : [0, 1]; const q = (a, b) => { const p = ctr.slice(); p[ax[0]] += a * VS / 2; p[ax[1]] += b * VS / 2; return p; };
+              st.face([q(-1, -1), q(1, -1), q(1, 1), q(-1, 1)], c[0] === '#' ? c : rgb2hex(c), { normal: d, alpha: .92, stroke: '#ffffff', lw: .5, salpha: .6 });
+            });
+          }
+          st.path(M.plan, COL.ok, 3); st.arrow(M.plan[M.plan.length - 2], M.plan[M.plan.length - 1], COL.ok, 3); st.text(M.plan[0], 'planned path through free voxels', COL.ok, { dy: -12, size: 9.5, bg: 'rgba(255,255,255,.85)' });
+          rows = [['occupied voxels (0.25 m)', String(M.vox.size)], ['dense grid for the room', `32 × 24 × 12 = 9,216 cells → 9.0 KB at 1 byte each`], ['free space known?', 'yes', COL.ok], ['plan collision-free paths', 'yes', COL.ok]];
+        }
+        if (mode === 'mesh') {
+          const quad = (o, u, v, n, c, du, dv) => { const nu = Math.max(1, Math.round(v3.n(u) / du)), nv = Math.max(1, Math.round(v3.n(v) / dv)); for (let a = 0; a < nu; a++) for (let b = 0; b < nv; b++) { const p00 = v3.a(o, v3.a(v3.k(u, a / nu), v3.k(v, b / nv))), p10 = v3.a(o, v3.a(v3.k(u, (a + 1) / nu), v3.k(v, b / nv))), p11 = v3.a(o, v3.a(v3.k(u, (a + 1) / nu), v3.k(v, (b + 1) / nv))), p01 = v3.a(o, v3.a(v3.k(u, a / nu), v3.k(v, (b + 1) / nv))); st.face([p00, p10, p11], c, { normal: n, stroke: '#ffffff', lw: .6, salpha: .9 }); st.face([p00, p11, p01], c, { normal: n, stroke: '#ffffff', lw: .6, salpha: .9 }); } };
+          const eye = st.E.eye; const R = M.room; let tris = 0;
+          const walls = [[[R.mn[0], R.mn[1], 0], [8, 0, 0], [0, 6, 0], [0, 0, 1], '#cfc9bf'], [[R.mn[0], R.mx[1], 0], [8, 0, 0], [0, 0, 2.8], [0, -1, 0], '#e2e2e6'], [[R.mn[0], R.mn[1], 0], [8, 0, 0], [0, 0, 2.8], [0, 1, 0], '#e2e2e6'], [[R.mx[0], R.mn[1], 0], [0, 6, 0], [0, 0, 2.8], [-1, 0, 0], '#e2e2e6'], [[R.mn[0], R.mn[1], 0], [0, 6, 0], [0, 0, 2.8], [1, 0, 0], '#e2e2e6']];
+          for (const [o, u, v, n, c] of walls) { const ctr = v3.a(o, v3.k(v3.a(u, v), .5)); if (v3.d(n, v3.s(eye, ctr)) <= 0) continue; quad(o, u, v, n, c, .8, .7); tris += 2 * Math.round(v3.n(u) / .8) * Math.round(v3.n(v) / .7); }
+          for (const ob of M.objs) { st.box(ob.mn, ob.mx, ob.col, { stroke: '#ffffff', lw: .8, salpha: .9 }); tris += 10; }
+          rows = [['triangles (this view)', String(tris)], ['distance-to-surface queries', 'fast (ESDF)', COL.ok], ['free space known?', 'yes (with TSDF/ESDF)', COL.ok], ['human-readable', 'yes', COL.ok]];
+        }
+        if (mode === 'gauss') {
+          for (const g of M.gs) st.ellipseSplat(g.p, g.u, g.v, g.c, .5);
+          rows = [['Gaussians', M.gs.length.toLocaleString()], ['floats each (3DGS, SH degree 3)', '59 = 3 pos + 3 scale + 4 rot + 1 opacity + 48 colour'], ['memory', ((M.gs.length * 59 * 4) / 1024).toFixed(0) + ' KB'], ['onboard drone use', 'research-grade, GPU-bound', COL.warn]];
+        }
+        S.ro(rows);
+        st.flush();
+      });
+    }
+  });
+}
+function rgb2hex(s) { const m = s.match(/\d+/g); return '#' + m.slice(0, 3).map(v => (+v).toString(16).padStart(2, '0')).join(''); }
+
+/* =====================================================================
+   L6 · MULTI-DRONE: separate frames, inter-robot loops, alignment, UWB
+   ===================================================================== */
+const SWARM3 = (() => {
+  const walls = [[0, 0, 30, 0], [30, 0, 30, 20], [30, 20, 0, 20], [0, 20, 0, 0], [10, 0, 10, 8], [10, 12, 10, 20], [20, 0, 20, 6], [20, 10, 20, 20], [0, 10, 6, 10], [24, 10, 30, 10]];
+  const paths = [
+    [[2, 2], [8, 2], [8, 9], [3, 12], [3, 18], [8, 18], [12, 10], [17, 9]],
+    [[28, 2], [22, 3], [22, 8], [15, 9], [12, 4], [16, 2]],
+    [[28, 18], [22, 18], [22, 12], [16, 10.1], [13, 15], [16, 18], [27, 13]],
+  ];
+  const cols = [COL.swm, COL.vis, COL.lrn], names = ['A', 'B', 'C'], alt = [1.3, 1.7, 2.1];
+  const sample = (P) => { const out = []; for (let i = 0; i < P.length - 1; i++) { const a = P[i], b = P[i + 1], L = Math.hypot(b[0] - a[0], b[1] - a[1]), n = Math.ceil(L / .4); for (let k = 0; k < n; k++) out.push([lerp(a[0], b[0], k / n), lerp(a[1], b[1], k / n)]); } out.push(P[P.length - 1]); return out; };
+  const tracks = paths.map(sample);
+  const r = rng(8); const maps = tracks.map(() => []);
+  walls.forEach(([x1, y1, x2, y2]) => { const L = Math.hypot(x2 - x1, y2 - y1); const n = Math.round(L * 7); for (let i = 0; i < n; i++) { const t = r(), x = lerp(x1, x2, t), y = lerp(y1, y2, t), z = r() * 3; tracks.forEach((tr, d) => { if (tr.some(q => Math.hypot(q[0] - x, q[1] - y) < 4.2)) maps[d].push([x, y, z]); }); } });
+  // frame offsets: true transform of each drone's start frame in world (A = reference)
+  const frames = tracks.map((tr, d) => ({ x: tr[0][0], y: tr[0][1], yaw: [0, 2.6, -1.9][d] }));
+  // inter-robot matches: places both drones passed within 1.2 m
+  const matches = [];
+  for (let a = 0; a < 3; a++) for (let b = a + 1; b < 3; b++) { let best = null; tracks[a].forEach((p, i) => tracks[b].forEach((q, j) => { const d = Math.hypot(p[0] - q[0], p[1] - q[1]); if (d < 1.6 && (!best || d < best.d)) best = { a, b, i, j, d }; })); if (best) matches.push(best); }
+  const falseM = { a: 0, b: 2, i: Math.floor(tracks[0].length * .45), j: Math.floor(tracks[2].length * .2) };
+  return { walls, tracks, maps, frames, matches, falseM, cols, names, alt };
+})();
+function labSwarm() {
+  const W = SWARM3;
+  return lessonCard({
+    id: 'swarm', num: 'L6', title: 'Several drones, one map',
+    q: 'Three drones each start with their own coordinate frame and no shared reference. How do they discover where the others are, merge their maps — and avoid being fooled?',
+    cap: '30 × 20 m floor · three agents · frames aligned from inter-robot loop closures (schematic)',
+    state: { u: 0 },
+    steps: [
+      { t: 'Three drones, three frames', p: 'Each drone runs its own VIO/LIO and measures everything relative to <b>where it took off</b> (axes at each start). Without GPS nobody knows how those frames relate, so drawing B\'s and C\'s maps in A\'s frame (identity guess) gives the overlapping mess you see.' },
+      { t: 'Find the overlap', p: 'Agents exchange <b>compact place descriptors</b> instead of raw data. When B\'s descriptor matches something A saw (lines), a geometric check gives the relative pose between the two keyframes: an <b>inter-robot loop closure</b>. Bandwidth matters: a NetVLAD descriptor is 4096 floats = 16 KB, versus ~320 KB for one raw 20,000-point LiDAR frame.' },
+      { t: 'Align the frames', p: 'Each inter-robot loop fixes one relative transform; a distributed pose-graph optimisation (D²SLAM, DOOR-SLAM, Kimera-Multi, Swarm-SLAM) solves all frames together. Watch the maps snap into one consistent building. Once aligned, any drone can plan into space another drone explored.' },
+      { t: 'Reject the impostor', p: 'Corridors look alike. The red match is wrong: it is <b>inconsistent</b> with the other matches (they imply a different B→C transform). Pairwise Consistency Maximisation (PCM, Mangelson et al. ICRA 2018) keeps the largest set of mutually consistent loops and drops the rest — used by DOOR-SLAM, Kimera-Multi and Swarm-SLAM.' },
+      { t: 'Range between drones', p: 'UWB radios give drone-to-drone <b>distances</b> (lines, metres) at tens of Hz, even without visual overlap. Omni-swarm and D²SLAM fuse these ranges with visual detections of the other drones, which keeps the relative frames bounded between loop closures — critical for formation flight and collision avoidance.' },
+    ],
+    onStep: (S, i) => { S.u = i >= 2 ? (i === 2 ? 0 : 1) : 0; },
+    build: (stage, S) => {
+      const st = view3d(stage, { aspect: .62, yaw: -2.0, pitch: .9, dist: 34, target: [15, 10, 0], minDist: 6, maxDist: 90 });
+      S.add(ctlBtns(['Replay alignment', () => { S.u = 0; }]), [2]);
+      const GE = [[0, 0, 0], [-9, 4, .9], [-6, -5, -.7]]; // initial guess error per frame: dx, dy, dyaw
+      const tf = (d, u, p) => { const F = W.frames[d], g = GE[d], k = 1 - u; const c = Math.cos(g[2] * k), s = Math.sin(g[2] * k); const dx = p[0] - F.x, dy = p[1] - F.y; return [F.x + c * dx - s * dy + g[0] * k, F.y + s * dx + c * dy + g[1] * k, p[2]]; };
+      const fyaw = (d, u) => W.frames[d].yaw + GE[d][2] * (1 - u);
+      animate(st, (st, dt) => {
+        const step = S.step; if (step === 2) S.u = Math.min(1, S.u + dt / 2.4);
+        const u = step < 2 ? 0 : S.u; const e = u * u * (3 - 2 * u);
+        st.begin(dt);
+        st.grid(0, 30, 0, 20, 2, 0, '#ececf0');
+        if (e > .95) for (const [x1, y1, x2, y2] of W.walls) st.face([[x1, y1, 0], [x2, y2, 0], [x2, y2, 3], [x1, y1, 3]], '#9aa0a6', { alpha: .05, stroke: '#c8c8ce', salpha: 3 });
+        const pos = W.tracks.map((tr, d) => { const k = Math.floor((st.t * 6 + d * 40) % tr.length); return tr[k]; });
+        for (let d = 0; d < 3; d++) {
+          const col = W.cols[d];
+          for (const p of W.maps[d]) st.dot(tf(d, e, p), 1.5, col, { alpha: .55 });
+          st.path(W.tracks[d].map(q => tf(d, e, [q[0], q[1], W.alt[d]])), col, 2);
+          const F = W.frames[d]; const o = tf(d, e, [F.x, F.y, 0]);
+          st.axes(o, m3.rz(fyaw(d, e)), 1.4, { names: [`x${W.names[d]}`, `y${W.names[d]}`, 'z'], labels: true });
+          st.text(o, `frame ${W.names[d]}`, col, { dx: -10, dy: 14, align: 'right', size: 10, weight: 700, bg: 'rgba(255,255,255,.85)' });
+          const p = pos[d]; st.drone(tf(d, e, [p[0], p[1], W.alt[d]]), m3.I(), col, 1.6);
+        }
+        if (step >= 1) for (const m of W.matches) { const A = tf(m.a, e, [...W.tracks[m.a][m.i], W.alt[m.a]]), B = tf(m.b, e, [...W.tracks[m.b][m.j], W.alt[m.b]]); st.line(A, B, COL.ok, 2.4, { dash: [5, 3] }); st.dot(A, 4, COL.ok); st.dot(B, 4, COL.ok); if (step === 1) st.text(v3.l(A, B, .5), `${W.names[m.a]}↔${W.names[m.b]} match`, COL.ok, { dx: 8, size: 9.5, bg: 'rgba(255,255,255,.85)' }); }
+        if (step === 3) { const m = W.falseM; const A = tf(m.a, e, [...W.tracks[m.a][m.i], W.alt[m.a]]), B = tf(m.b, e, [...W.tracks[m.b][m.j], W.alt[m.b]]); st.line(A, B, COL.lid, 2.4, { dash: [5, 3] }); st.text(v3.l(A, B, .5), '✗ rejected by PCM: inconsistent', COL.lid, { dx: 8, size: 9.5, bg: 'rgba(255,255,255,.85)' }); }
+        const rows = [['agents', '3'], ['map points A / B / C', W.maps.map(m => m.length).join(' / ')]];
+        if (step >= 1) rows.push(['inter-robot loops found', String(W.matches.length)], ['NetVLAD descriptor', '4096 × 4 B = 16 KB'], ['raw LiDAR frame', '20,000 pts × 16 B ≈ 320 KB']);
+        if (step >= 2) rows.push(['alignment', (e * 100).toFixed(0) + ' %', e > .99 ? COL.ok : COL.warn]);
+        if (step === 3) rows.push(['outliers rejected', '1 of ' + (W.matches.length + 1), COL.lid]);
+        if (step === 4) {
+          const P = pos.map((p, d) => [p[0], p[1], W.alt[d]]);
+          for (let a = 0; a < 3; a++) for (let b = a + 1; b < 3; b++) { const d = v3.n(v3.s(P[a], P[b])); st.line(P[a], P[b], COL.spc, 1.4, { dash: [2, 3] }); st.text(v3.l(P[a], P[b], .5), d.toFixed(2) + ' m', COL.spc, { size: 9.5, align: 'center', bg: 'rgba(255,255,255,.85)' }); rows.push([`UWB range ${W.names[a]}–${W.names[b]}`, d.toFixed(2) + ' m', COL.spc]); }
+        }
+        S.ro(rows);
+        st.flush();
+      });
+    }
+  });
+}
+
+/* ---------------- section ---------------- */
+const LAB_LESSONS = [['imu', 'L1 · IMU & drift'], ['cam', 'L2 · Cameras & BA'], ['lidar', 'L3 · LiDAR & degeneracy'], ['graph', 'L4 · Loop closure'], ['maps', 'L5 · Map types'], ['swarm', 'L6 · Multi-drone']];
+function buildLab() {
+  const sec = h('section', { id: 'lab', class: 'sec wrap' });
+  sec.append(sectionHead('3d lab', 'L1–6', 'The core ideas, in 3D, one step at a time', 'Six interactive lessons that build the vocabulary used in every paper below: state and IMU drift, camera geometry, LiDAR degeneracy, factor graphs and loop closure, map types, and multi-drone SLAM. Each scene runs the real computation at small scale. <em>Drag to rotate, shift-drag to pan, +/− to zoom; use “Next step” to walk through.</em>'));
+  sec.append(h('div', { class: 'filters' }, ...LAB_LESSONS.map(([id, t]) => h('a', { class: 'btn btn-sm btn-tonal', href: '#lab-' + id }, t))));
+  sec.append(labIMU(), labCam(), labLidar(), labGraph(), labMaps(), labSwarm());
+  return sec;
 }
 
 const LIVO2_NTU={cols:["eee 01", "eee 02", "eee 03", "nya 01", "nya 02", "nya 03", "sbs 01", "sbs 02", "sbs 03"],rows:[{name:"FAST-LIVO2",v:[0.068, 0.051, 0.068, 0.073, 0.075, 0.059, 0.062, 0.061, 0.06]},{name:"FAST-LIO2",v:[0.212, 0.172, 0.213, 0.141, 0.212, 0.133, 0.184, 0.161, 0.142]},{name:"R3LIVE",v:[0.072, 0.059, 0.078, 0.08, 0.084, 0.079, 0.075, 0.076, 0.07]},{name:"FAST-LIVO",v:[0.191, 0.132, 0.192, 0.121, 0.182, 0.112, 0.253, 0.134, 0.132]},{name:"LVI-SAM",v:[3.901, 0.182, 0.287, 0.205, 1.296, 0.176, 0.254, 0.221, 0.309]},{name:"SDV-LOAM",v:[0.301, 1.842, 0.301, 0.202, 0.214, 0.251, 0.212, 0.233, 0.281]}]};
@@ -2622,7 +3844,7 @@ const SCOREKEYS = [['acc', 'Accuracy'], ['eff', 'Onboard efficiency'], ['rob', '
 
 /* ---------------- NAV ---------------- */
 function buildNav() {
-  const links = [['brief', 'Brief'], ['problem', 'Problem'], ['sensors', 'Sensors'], ['stack', 'Pipeline'], ['families', 'Families'], ['methods', 'Methods'], ['flight', 'Flight test'], ['bench', 'Benchmarks'], ['fit', 'Best fit'], ['build', 'Build'], ['datasets', 'Datasets'], ['roadmap', 'Roadmap'], ['sources', 'Sources']];
+  const links = [['brief', 'Brief'], ['problem', 'Problem'], ['sensors', 'Sensors'], ['stack', 'Pipeline'], ['lab', '3D lab'], ['families', 'Families'], ['methods', 'Methods'], ['flight', 'Flight test'], ['bench', 'Benchmarks'], ['fit', 'Best fit'], ['build', 'Build'], ['datasets', 'Datasets'], ['roadmap', 'Roadmap'], ['sources', 'Sources']];
   const nav = h('nav', { class: 'nav' }, h('div', { class: 'wrap' },
     h('a', { class: 'brand', href: '#top' }, 'SLAM', h('b', {}, '/'), 'DRONES'),
     h('div', { class: 'nav-links' }, ...links.map(([id, t]) => h('a', { href: '#' + id, 'data-id': id }, t, id === 'flight' ? h('span', { class: 'nav-count', id: 'navCount' }, STATE.cmp.size) : null)))
@@ -2831,11 +4053,15 @@ function openDetail(id, push = true) {
   W.append(h('div', { class: 'callout', style: 'margin-top:18px' }, h('b', {}, 'For a GPS-denied drone: '), h('span', { html: m.verdict })));
   // simulation
   const simSec = h('div', { class: 'dsec' }, h('h3', { class: 'h' }, 'flight simulation', h('span', { class: 'us' }, '_')));
-  const ms = h('div', { class: 'stage' });
-  simSec.append(h('div', { class: 'simbox' }, ms, h('div', { class: 'simbar' }, h('span', { class: 'mono' }, `${EST[m.est].name} profile vs ground truth · schematic`), h('span', { class: 'live' }, h('i'), 'live'))));
+  const simOpts = { aspect: .5, stripes: m.est === 'lio_intensity', thermal: m.est === 'tio' || m.est === 'multi', names: [m.name] };
+  simSec.append(simTabs([
+    ['3D replay', (stage) => missionView3d(stage, [m.est], { aspect: .5, names: [m.name], colors: [F.col] }), `${EST[m.est].name} profile vs ground truth in 3D · schematic`],
+    ['Top-down + error strip', (stage) => missionView(stage, [m.est], simOpts), `${EST[m.est].name} profile vs ground truth · schematic`],
+  ], 0));
+  const lessons = LAB_FOR[m.fam] || [];
+  if (lessons.length) simSec.append(h('div', { class: 'labref' }, h('span', {}, 'Understand the mechanism in 3D:'), ...lessons.map(id => { const L = LAB_LESSONS.find(x => x[0] === id); return h('a', { class: 'chip', href: '#lab-' + id, onclick: (e) => { e.preventDefault(); closeDetail(false); history.replaceState(null, '', '#lab-' + id); setTimeout(() => document.getElementById('lab-' + id)?.scrollIntoView({ behavior: 'smooth' }), 60); } }, L[1], ' →'); })));
   simSec.append(h('p', { class: 'note' }, m.simNote || 'The same flight as the hero: textured lab, a fast yaw spin, a long corridor, a low-light hall, a smoky rack aisle, then back to the start. The error model is driven by what this sensor set can observe at each moment; it illustrates failure modes and is not a reproduction of the paper\'s numbers.'));
   W.append(simSec);
-  requestAnimationFrame(() => { const s = missionView(ms, [m.est], { aspect: .5, stripes: m.est === 'lio_intensity', thermal: m.est === 'tio' || m.est === 'multi', names: [m.name] }); });
   // mechanism
   if (m.mech) {
     const mech = h('div', { class: 'stage' });
@@ -2909,9 +4135,10 @@ function buildFlight() {
     box.innerHTML = '';
     const ms = [...STATE.cmp].map(byId).filter(Boolean);
     if (!ms.length) { box.append(h('p', { class: 'mute' }, 'Select at least one method.')); return; }
-    const stage = h('div', { class: 'stage' });
-    box.append(h('div', { class: 'simbox' }, stage, h('div', { class: 'simbar' }, h('span', { class: 'mono' }, 'Mission replay · each line is one estimator · schematic error model'), h('span', { class: 'live' }, h('i'), 'live'))));
-    requestAnimationFrame(() => missionView(stage, ms.map(m => m.est), { aspect: .56, colors: ms.map((m, i) => CMPCOLS[i]), names: ms.map(m => m.name), layers: { rays: false, cone: false, ellipse: false } }));
+    box.append(simTabs([
+      ['3D replay', (stage) => missionView3d(stage, ms.map(m => m.est), { aspect: .56, colors: ms.map((m, i) => CMPCOLS[i]), names: ms.map(m => m.name) }), 'Mission replay in 3D · walls, LiDAR returns, tracked features, uncertainty · schematic error model'],
+      ['Top-down + error strip', (stage) => missionView(stage, ms.map(m => m.est), { aspect: .56, colors: ms.map((m, i) => CMPCOLS[i]), names: ms.map(m => m.name), layers: { rays: false, cone: false, ellipse: false } }), 'Mission replay · each line is one estimator · schematic error model'],
+    ], STATE.flightTab || 0, (i) => STATE.flightTab = i));
     const rd = h('div', { class: 'stage', style: 'background:#fff;border-radius:16px' });
     const t = h('table', { class: 'tbl' });
     t.append(h('thead', {}, h('tr', {}, h('th', {}, ''), ...ms.map((m, i) => h('th', {}, h('span', { class: 'dot', style: { background: CMPCOLS[i] } }), m.name)))));
@@ -2924,6 +4151,24 @@ function buildFlight() {
   };
   STATE.renderCmp = render; render();
   return sec;
+}
+
+
+/* ---------------- sim tabs (3D / 2D) ---------------- */
+const LAB_FOR = { vio: ['cam', 'imu', 'graph'], lio: ['lidar', 'graph'], livo: ['lidar', 'maps'], deg: ['lidar', 'imu'], lrn: ['cam', 'maps'], swm: ['swarm', 'graph'] };
+function simTabs(tabs, start = 0, onSwitch) {
+  const wrap = h('div', { class: 'simtabs' });
+  const head = h('div', { class: 'tabhead' });
+  const body = h('div');
+  const show = (i) => {
+    $$('button', head).forEach((b, j) => b.classList.toggle('on', j === i)); body.innerHTML = '';
+    const stage = h('div', { class: 'stage' });
+    body.append(h('div', { class: 'simbox' }, stage, h('div', { class: 'simbar' }, h('span', { class: 'mono' }, tabs[i][2]), h('span', { class: 'live' }, h('i'), 'live'))));
+    requestAnimationFrame(() => tabs[i][1](stage)); onSwitch && onSwitch(i);
+  };
+  tabs.forEach(([t], i) => head.append(h('button', { class: 'btn btn-sm btn-tonal', onclick: () => show(i) }, t)));
+  wrap.append(head, body); show(start);
+  return wrap;
 }
 
 /* ---------------- BENCHMARKS ---------------- */
@@ -3137,7 +4382,7 @@ function buildSources() {
 /* ---------------- BOOT ---------------- */
 function boot() {
   const root = $('#root');
-  root.append(buildNav(), buildHero(), buildBrief(), buildProblem(), buildSensors(), buildStack(), buildFamilies(), buildMethods(), buildFlight(), buildBench(), buildFit(), buildBuild(), buildDatasets(), buildRoadmap(), buildSources(),
+  root.append(buildNav(), buildHero(), buildBrief(), buildProblem(), buildSensors(), buildStack(), buildLab(), buildFamilies(), buildMethods(), buildFlight(), buildBench(), buildFit(), buildBuild(), buildDatasets(), buildRoadmap(), buildSources(),
     h('footer', { class: 'wrap' }, h('div', { style: 'display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;border-top:1px solid var(--hair);padding-top:20px' }, h('span', {}, 'SLAM/DRONES · a field guide for Sirisha · November 2026'), h('a', { href: '/' }, '← SLAM/INDEX (general edition)'))));
   document.body.append(detail);
   const m = location.hash.match(/^#m-(.+)$/); if (m && byId(m[1])) openDetail(m[1], false);
